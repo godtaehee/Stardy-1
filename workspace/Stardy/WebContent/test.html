@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<input type="file">
+<div class="frame"></div>
+
+<input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/> <div id="image_container"></div> 
+<script> 
+function setThumbnail(event) 
+{ for (var image of event.target.files) 
+{ var reader = new FileReader(); 
+reader.onload = function(event) 
+{ 
+	console.log(event.target.result);
+	var img = document.createElement("img"); 
+img.setAttribute("src", event.target.result); 
+document.querySelector("div#image_container").appendChild(img); 
+}; 
+	 reader.readAsDataURL(image); 
+} 
+} 
+</script>
+
+<script>
+window.addEventListener("load", () => {
+	
+	let inputFile = document.querySelector('input[type="file"]');
+	
+	inputFile.onchange = function (e) {
+		
+		console.log(e.target);
+				
+		let reader = new FileReader();
+		
+		console.log(reader);
+		
+		reader.onload = function (event) {
+			console.log(event);
+			console.log(e.target.result);
+		}
+	}
+});
+</script>
+</body>
+</html>

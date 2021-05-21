@@ -1,0 +1,74 @@
+/* style - My Page - MyStudy */
+/* Content Box */
+    /* My Studies Box */
+    .my-studies-box{
+        flex-grow: 1;
+
+        display: flex;
+        justify-content: center;
+
+    }
+        /* My Studies */
+        .my-studies-box .my-studies{
+                display: grid;
+
+                grid-template-columns: minmax(350px, 600px);
+                grid-template-rows: repeat(auto-fit, 200px);
+                gap: 20px;
+
+                margin: 20px;
+            }
+            /* Study Box */
+            .my-studies .study-box{
+                border: 1px solid #000;
+                border-radius: 10px;
+                }
+                    .study-box .study-bg-box{
+                        height: 150px;
+                    }
+                        .study-bg{
+                            width: 100%;
+                            height: 100%;
+
+                            border-radius: 10px;
+                        }
+                    .study-box .study-name{
+                        height: 50px;
+
+                        line-height: 50px;
+                        padding-left: 10px;
+                        font-weight: bold;
+                    }
+            /* Study Box */
+        /* My Studies */
+    /* My Studies Box */
+
+/* Content Box */
+/* style - My Page - MyStudy */
+
+/* media Query (PC ver.)*/
+@media screen and (min-width: 800px){
+
+    /* My Studies Box */
+        /* My Studies */
+        .my-studies-box .my-studies{
+                grid-template-columns: repeat(2, minmax(250px, 450px));
+                grid-template-rows: repeat(auto-fit, 250px);
+            }
+            /* Study Box */
+            .my-studies .study-box{
+                border: 1px solid #000;
+                }
+                    .study-box .study-bg-box{
+                        height: 200px;
+                    }
+                    .study-box .study-name{
+                        height: 50px;
+
+                        line-height: 50px;
+                    }
+            /* Study Box */
+        /* My Studies */
+    /* My Studies Box */
+}
+/* media Query (PC ver.) */

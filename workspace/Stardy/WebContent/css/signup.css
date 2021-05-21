@@ -1,0 +1,142 @@
+/* style - signup */
+.signup-container{
+    height: 100%;
+
+    display: inline-block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 21px;
+}
+.signup-title{
+    background-color: #1a4d92;
+    
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 28px;
+    
+    text-align: center;
+    height: 75px;
+    line-height: 75px;
+    
+    margin: 0;
+}
+.signup-form-container{
+    background-color: #ddeef3;
+    margin-top: 15px;
+
+    display: flex;
+}
+.form-signup{
+    width: 100%;
+
+    position: relative;
+}
+    .form-signup > *{
+        margin-left: 21px;
+    }
+        .form-signup input{
+            height: 66.9px;
+        }
+        .input-email{
+            /* E-mail 형식 맞으면 check */
+            background: #ffffff url("../img/icon-check.png") no-repeat 90% !important;
+            /* background: #ffffff */
+        }
+        .input-password-check{
+            /* 로그인 실패 시 warning */
+            background: #ffffff url("../img/icon-warning.png") no-repeat 90%;
+            /* background: #ffffff */
+        }
+
+        .button-signup{
+            margin: 39px 0;
+            background: rgb(43, 152, 186, 0.93);
+            width: 98%;
+            height: 66.9px;
+
+			font-size: 24px;
+			
+			line-height: 66.9px;
+			
+			color: #fff;
+            cursor: pointer;
+            
+            display: inline-flex;
+            justify-content: center;
+        }
+        
+    .signup-error{
+        background: url("../img/login-error.png") no-repeat;
+
+        height: 75.4px;
+        width: 284px;
+
+        top: 555px;
+        left: 525px;
+        position: absolute;
+
+        opacity: 0;
+    }
+    .show-ani{
+        animation: show-ani 1s forwards;
+    }
+/* style - signup */
+
+/* ani */
+
+@keyframes show-ani{
+    /* 0 ~ 1  from -> to // 0% ~ 100%*/
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+/* ani */
+@media screen and (min-width: 800px) {
+
+    .signup-container{
+    height: 100%;
+
+    display: inline-block;
+    width: 526px;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 21px;
+	}
+	.form-login > *{
+        margin-left: 21px;
+    }
+      .button-signup{
+         margin: 49px 0 39.2px 0;
+         background: rgb(43, 152, 186, 0.93);
+         width: 485px;
+         height: 66.9px;
+
+		font-size: 24px;
+		
+		line-height: 66.9px;
+		
+		color: #fff;
+         cursor: pointer;
+         
+         display: inline-flex;
+         justify-content: center;
+     }
+	.login-help > .find-password{
+        margin: 39.2px 20px 125.1px 109.2px;
+        font-weight: bold;
+    }
+    .login-help > .signup{
+        margin: 39.2px 109.2px 125.1px 23px;
+        font-weight: bold;
+    }
+    .login-help > .between-border{
+        top: 35px;
+    }
+}

@@ -1,0 +1,35 @@
+/* Style - My page - modify */
+.modify-box{
+    background-color: #ddeef3;
+}
+
+    .modify-box .modify-form-box{
+        margin-left: 20px;
+    }
+        .modify-form input{
+            height: 66.9px;
+        }
+            .button-box{
+                margin: 49px 0 39.2px 0;
+
+                width: 90%;
+                display: flex;
+                justify-content: flex-end;
+            }
+                .button-modify{
+                    margin-right: 10px;
+                }
+
+    .input-password-check{
+        /* 로그인 실패 시 warning */
+        background: #ffffff url("../../img/icon-warning.png") no-repeat 90%;
+        /* background: #ffffff */
+    }
+/* Style - My page - modify */
+
+/* media Query (PC ver.)*/
+@media screen and (min-width: 800px){
+
+
+}
+/* media Query (PC ver.) */

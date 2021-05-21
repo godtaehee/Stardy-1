@@ -1,0 +1,157 @@
+/* style - My Page - Bookmark */
+/* Content Box */
+   /* Bookmarks Box */
+    .bookmarks-box{
+        height: 100%;
+        flex-grow: 1;
+
+        display: flex;
+        justify-content: center;
+
+    }
+        /* Bookmarks */
+        .bookmarks-box .bookmarks{
+            display: grid;
+
+            grid-template-columns: minmax(350px, 600px);
+            grid-template-rows: repeat(auto-fill, 200px);
+            gap: 20px;
+
+            margin: 20px;
+        }
+            /* Bookmark Box */
+            .bookmarks > .bookmark-box{
+                width: 100%;
+
+                border: 1px solid #000;
+                border-radius: 10px;
+
+                font-weight: bold;
+            }
+                .bookmark-main > .content-box{
+                    border-radius: 10px;
+                }
+                .bookmark-box > .bookmark-main{
+                    display: flex;
+                    height: 150px;
+
+                    position: relative;
+                }
+
+                    .bookmark-main > .content-box{
+                        flex-grow: 1;
+
+                        line-height: 150px;
+                        text-align: center;
+
+                        
+                    }
+                    .bookmark-main > .icon-bookmark{
+                        background: url("../../img/default/fav_on.svg") no-repeat center;
+                        background-size: contain;
+
+                        width: 30px;
+                        height: 30px;
+
+                        position: absolute;
+
+                        top: 5px;
+                        right: 5px;
+
+                        cursor: pointer;
+                    }
+                    .icon-bookmark:hover{
+
+                    }
+
+                .bookmark-box > .bookmark-sub{
+                    height: 50px;
+
+                    border-top: 1px dashed #000;
+                    position: relative;
+                }
+                    .bookmark-sub > *{
+                        display: inline-block;
+
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+
+                        position: absolute;
+                    }
+                    .bookmark-sub > .writer-box{
+                        left: 30px;
+                    }
+                    .bookmark-sub > .date-box{                        
+                        right: 30px;
+                        font-weight: initial;
+                    }
+            /* Bookmark Box */
+        /* My Bookmarks */
+   /* Bookmark Box */
+/* Content Box */
+/* style - My Page - Bookmark */
+.pager .prev {
+  height: 35px;
+  width: 35px;
+  background: url("../../img/btnPrev.svg") no-repeat center;
+  margin-right: 4px;
+}
+
+.pager .next {
+  height: 35px;
+  width: 35px;
+  background: url("../../img/btnNext.svg") no-repeat center;
+}
+
+.pager > ul {
+  display: flex;
+  height: 35px;
+}
+
+.pager > ul li {
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  margin-right: 4px;
+}
+
+.pager {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pager > ul > li a {
+  font-weight: bold;
+  color: #000;
+  padding: 50%;
+  width: 37px;
+}
+.pager div{
+	text-indent: -999px;
+	overflow: hidden;
+}
+.highlight{
+	color: #2ba5ca !important;
+}
+/* media Query (PC ver.)*/
+@media screen and (min-width: 800px){
+
+    /* Content Box */
+   /* Bookmarks Box */
+    /* Bookmarks */
+    .bookmarks-box .bookmarks{
+        grid-template-columns: repeat(2, minmax(250px, 450px));
+        grid-template-rows: repeat(auto-fit, 200px);
+    }
+        /* Bookmark Box */
+
+        /* Bookmark Box */
+    /* My Bookmarks */
+/* Bookmark Box */
+/* Content Box */
+}
+/* media Query (PC ver.) */

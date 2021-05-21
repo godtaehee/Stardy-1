@@ -1,0 +1,140 @@
+h1,h2,h3,h4,h5,h6,p,a, pre {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+li {
+    list-style: none;
+}
+
+ul,blockquote {
+    padding: 0;
+    margin: 0;
+}
+
+blockquote {
+    border-left: 3px solid red;
+    padding: 2px;
+}
+
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.active {
+
+}
+
+
+
+.container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+}
+
+.select-func {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.item button {
+    width: 20px;
+    height:20px;
+    border: 0;
+    background-size: cover;
+}
+
+
+
+.style-btn {
+    background: url("../img/summernote/magic-wand.png");
+}
+
+.bold-btn {
+    background: url("../img/summernote/bold.png");
+}
+
+.underline-btn {
+    background: url("../img/summernote/underlined-text.png");
+}
+
+.remove-btn {
+    background: url("../img/summernote/double-sided-eraser.png");
+}
+
+.font-family-btn {
+    position: relative;
+    display: inline-block;
+    padding: 1px 1px 1px 1px;
+}
+
+.caret {
+    display: inline-block;
+    top: 50%;
+    right: 4px;
+    border-top: 4px solid black;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+.recent-color {
+    background: url("../img/summernote/a.png");
+}
+
+.unordered-list {
+    background: url("../img/summernote/list-text.png");
+}
+
+.ordered-list {
+    background: url("../img/summernote/ordered-list.png");
+    background-size: cover;
+}
+
+.txt-con {
+    height: 100%;
+}
+/*<div class="note-editable" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="true" autocorrect="true" style="height: 300px;"><p>dsfasdfasdf</p></div>*/
+.txt-area {
+    border: 1px solid black;
+    height: 100%;
+}
+
+.style {
+    position: relative;
+}
+
+.style-list {
+    position: absolute;
+    padding: 10px;
+    width: 130px;
+}
+.style-item {
+    margin: 2px;
+}
+
+.style-item:hover {
+    background: #6b717a;
+}

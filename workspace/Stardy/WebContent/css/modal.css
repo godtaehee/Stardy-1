@@ -1,0 +1,96 @@
+/* Modal */
+.screen{
+    background-color: #000;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    transition: 0.3s;
+}
+
+.modal{
+    z-index: 100;
+    background-color: #fff;
+    
+    top: 25%;
+    left: 2%;
+    position: fixed;
+    
+    height: 40%;
+    width: 95%;
+    padding: 15px 15px;
+    border-radius: 0%;
+
+    box-shadow: 9px 11px 35px #5c5b5c;
+}
+    .modal .reply{
+        width: 100%;
+        height: 100%;
+        font-family: "Noto Sans KR", "Roboto" !important;
+        resize: none;
+
+        white-space: pre-line;
+    }
+    .modal-main{
+        height: 80%;
+    }
+        .modal-main .modal-title{
+            height: 15%;
+            font-size: 2vh;
+            font-weight: bold;
+        }
+        .modal-main .reply-content-box{
+            height: 58%;
+            margin-top: 2%;
+        }
+        .modal-main .reply-info-box{
+            height: 23%;
+            margin-top: 2%;
+            
+        }
+            .reply-info-box input{
+                height: 90%;
+                width: 40%;
+            }
+    .modal-footer{
+        display: flex;
+        justify-content: flex-end;
+
+        height: 20%;
+    }
+        .modal-button-box button{
+            height: 4vh;
+            border-radius: 4px;
+            padding: 0 12px;
+            font-weight: 600;
+            line-height: 1.5;
+            
+        }
+        .modal-button-box > .button-modify{
+            background-color: #a6aafa;
+            color: #000;
+        }
+        .modal-button-box > .button-delete{
+            background-color: #ffcbcb;
+            color: #000;
+        }
+        .modal-button-box > .button-cancel{
+            background-color: #aaaaaa;
+            color: #000;
+        }
+/* Modal */
+
+/* media Query (PC ver.) */
+@media screen and (min-width: 800px) {
+
+    /* Modal */
+    .modal{
+        top: 25%;
+        left: 25%;
+        
+        width: 50%;
+    }
+    /* Modal */
+}
+/* media Query (PC ver.) */

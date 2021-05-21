@@ -1,0 +1,156 @@
+/* style - My Page - Friends */
+    /* Content-form */
+    .content-form-box{
+
+    }
+        .content-form{
+			display: inline-block;
+        }
+            .input-friend{
+                height: 35px;
+                width: 210px;
+
+                padding-left: 24px;
+
+                margin: 15px 0 0 20px;
+
+                outline: none;
+
+                color: #a1a1a1;
+
+                border-radius: 6px;
+                border: solid 1px #707070;
+                background-color: #ffffff;
+            }
+            .button-search{
+                width: 30px;
+                height: 30px;
+                background: url("../../img/icon-search.png") no-repeat center;
+                background-size: contain;
+
+                margin-right: 12px;
+            }
+    /* Content-form */
+    /* Content-list Box*/
+    .content-list-box{
+        width: initial;
+        margin: 30px;
+        flex-grow: 1;
+    }
+        .content-list-box > div:first-child{
+            display: flex;
+            justify-content: space-between;
+        }
+            .content-list-title{
+                font-size: 15px;
+                font-weight: bold;
+                line-height: 1.05;
+                color: #2a2929;
+            }
+            .friend-modify{
+                width: 55px;
+                height: 25px;
+                font-size: 15px;
+                line-height: 12px;
+                text-align: center;
+                color: #727171;
+
+                border: none;
+            }
+        /* Content List (Frineds) */
+        .content-list{
+            height: 530px; /* 중요 */
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+            align-content: flex-start; /* 화면 늘어나도 gap 유지 ==> 정렬 주기 */
+            
+            overflow-x: scroll;
+            overflow-y: hidden;
+            gap: 30px;
+
+            margin-top: 20px;
+        }
+        .friend-profile-box{
+            flex-grow: 0;
+            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        }
+            .friend-profile-box div{
+                width: 150px;
+                display: flex;
+                align-items: center;
+            }
+                .friend-profile-main{
+                    background-color: #fff;
+                    height: 180px;
+
+                    position: relative;
+                }
+                    /* 친구 삭제 버튼 */
+                    .delete-friend{
+                        position: absolute;
+                        top: 9px;
+                        right: 9px;
+                        
+                        height: 23px;
+                        width: 23px;
+
+                        background: url("../../img/icon-X.png") no-repeat;
+                    }
+                    /* 친구 삭제 버튼 */
+                    .friend-icon{
+                        width: 80%;
+                        height: 80%;
+                        --border-radius: 50%;
+
+                        margin: 0 auto;
+
+                        display: block;
+                    }
+                    .friend-name{
+                    	padding: auto 15px auto 14px;
+                        font-size: 15px;
+                        font-weight: 500;
+                        color: #606060;
+                    }
+
+                .friend-profile-sub{
+                	background-color: #d0ddf2;
+                    height: 45px;
+					padding-left: 10px;
+                    --border: solid 1px #95989a;
+                }
+        /* Content List (Frineds) */
+    /* Content-list Box */
+/* Content Box */
+/* style - My Page - Friends */
+
+/* media Query (PC ver.)*/
+@media screen and (min-width: 800px){
+
+        /* Content List Box */
+        .content-list-box{
+
+        }
+            /* Content List Title */
+            .content-list-title{
+                font-size: 20px;
+            }
+            .friend-modify{
+                width: 60px;
+                height: 25px;
+
+                font-size: 18px;
+            }
+            /* Content List Title */
+            /* Content List */
+            .content-list{
+
+            }
+            /* Content List */
+    /* Content-Box */
+}
+/* media Query (PC ver.) */
