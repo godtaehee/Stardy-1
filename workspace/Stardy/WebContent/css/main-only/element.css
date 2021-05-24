@@ -1,0 +1,45 @@
+/* element */
+.hide{
+    display: none !important;
+}
+.show{
+    display: block !important;
+}
+
+.input-control{
+    margin: 53.4px 0 14.5px 0;
+}
+
+.input-item{
+    width: 90%;
+
+    border-radius: 10px;
+    border: none;
+    
+    font-size: 18px;
+
+    text-indent: 10px;
+
+    padding: 0;
+}
+
+.button{
+    outline: none;
+    border: none;
+
+    cursor: pointer;
+}
+.button-img{
+    text-indent: -999px;
+    overflow-x: hidden;
+
+    outline: none;
+    border: none;
+}
+
+.text-no-over{
+    text-overflow: hidden; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+/* element */

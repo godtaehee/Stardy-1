@@ -1,0 +1,208 @@
+/* First Box */
+.my-page-box{
+    height: 100%;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    
+    --font-family: AppleSDGothicNeoB00;
+}
+/* Profile Box */
+.profile-box{
+    --background-color: #f9f4f4;
+
+    flex-basis: 142px;
+
+    display: flex;
+}
+    .profile-box > *{
+        display: flex;
+        flex-direction: column;
+        margin-left: 15px;
+        
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+    .profile-info-box{
+        flex-grow: 1;
+    }
+        .profile-info-box > *{
+           margin: 20px 0 0 0;
+        }
+        .profile-icon{
+            width: 114px;
+            height: 114px;
+            border-radius: 50%;
+        }
+        .profile-nick{
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+            color: #515151;
+        }
+        .profile-status{
+        	flex-grow: 1;
+        	padding: 0;
+            font-size: 13px;
+            width: 100%;
+            
+            color: #797979;
+            resize: none;
+            font-family: "Noto Sans KR", "Roboto" !important;
+
+            border: none;
+            outline: none;
+        }
+        .limit{
+        	display: flex;
+        	justify-content: flex-end;
+        	
+        	font-size: 9px;
+        	color: #797979;
+            font-family: "Noto Sans KR", "Roboto" !important;
+        }
+        .limit > .text-limit{
+        
+        }
+        .profile-modify{
+            width: 145px;
+            height: 31px;
+
+            background: none;
+            color: #494949;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid #000;
+            border-radius: 4px;
+            line-height: 31px;
+        }
+        
+        .button-upload{
+        	width: 25px;
+        	height: 25px;
+        	
+        	line-height: 20px;
+        	text-align: center;
+        	
+        	margin: 5px auto;
+        	
+        	border-radius: 50%;
+        	background: #d9d9d9;
+        	color: #fff;
+        	font-weight: bold;
+        	cursor: pointer;
+        	font-size: 25px;
+        }
+/* Profile Box */
+/* Content Box */
+.menu-underline{
+    border-bottom: solid 6px #2ba5ca;
+}
+
+.content-box{
+    flex-basis: 450px;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+    /* Content-menu */
+    .content-menu{
+        border-bottom: solid 1px #707070;
+    }
+        .content-menu ul{
+            display: flex;
+            margin: auto 0 auto 0;
+        }
+            .content-menu ul > *{
+                height: 106px;
+
+                margin-left: 20px;
+            }
+
+                .content-menu a{
+                    margin-left: 15px;
+                    line-height: 106px;
+                    font-size: 12px;
+                    padding-left: 25px;
+                }
+                .content-menu > ul > li:first-child a{
+                	padding-left: 30px;
+                }
+                .friends-list{
+                    background: url("../../img/default/fr_list.svg") no-repeat left;
+                    background-size: contain;
+                }
+                .friends-list-on{
+                    background: url("../../img/default/fr_list_on.svg") no-repeat left;
+                    background-size: contain;
+                }
+                /* .my-study{
+                    background: url("../../img/icon-myStudy.png") no-repeat left;
+                } */
+                .my-bookmark{
+                    background: url("../../img/default/fav.svg") no-repeat left;
+                    background-size: contain;
+                }
+                .my-bookmark-on{
+                    background: url("../../img/default/fav_page_on.svg") no-repeat left;
+                    background-size: contain;
+                }
+                .my-modify{
+                    background: url("../../img/default/setting.svg") no-repeat left;
+                    background-size: contain;
+                }
+                .my-modify-on{
+                    background: url("../../img/default/setting_on.svg") no-repeat left;
+                    background-size: contain;
+                }
+    /* Content-menu */
+
+/* Content Box */
+
+@media screen and (min-width: 800px){
+    /* style - My Page - Friends */
+    .my-page-box{    
+        flex-direction: row;
+    }
+
+    /* Profile Box */
+    .profile-box{
+        width: 284px;
+        flex-direction: column;
+    }
+        .dummy-box{
+            height: 106px;
+        }
+        .profile-box > *{
+            justify-content: stretch;
+            align-items: center;
+            margin-left: 0;
+             
+        }
+            .profile-info-box > *{
+                margin-top: 30px;
+            }
+            /* Profile Nickname */
+            .profile-nick{
+                font-size: 20px;
+            }
+            /* Profile Status */
+            .profile-status{
+                font-size: 19px;
+            }
+            /* Profile Icon */
+            .profile-icon{
+                width: 228px;
+                height: 228px;
+            }
+    /* Profile Box */
+    /* Content-Box */
+        .content-menu a{
+            font-size: 20px;
+            background-size: initial;
+        }
+        
+    /* Content-Box */
+}

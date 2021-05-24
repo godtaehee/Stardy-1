@@ -1,0 +1,263 @@
+/* Style Board - read */
+.input-box{
+    padding-top: 20px;
+}
+
+.main-only > .board-read-box{
+    font-family: "Noto Sans KR", "Roboto" !important;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    padding: 10px 20px;
+
+    /* Mobile font-size 14px */
+    font-size: 14px; 
+}
+    .board-box{
+        
+    }
+        .board-box > :nth-child(4){
+            padding: 0;
+        }
+        
+    .pager-box :last-child{
+    	margin-left: 5px;
+    }
+    .info-box{
+    	align-items: center;
+    	padding-left: 10px;
+    }
+    	.likes{
+    		font-size: 18px;
+    		font-weight: 400;
+    		margin-left: 10px;
+    	}
+	    .button-like{
+	    	height: 30px;
+	        width: 30px;
+	        cursor: pointer;
+	        padding: 0;
+	        opacity: 0.8;
+	    }
+	    .like{
+	    	background: url("../../img/default/like_on.svg") no-repeat center;
+	    	background-size: contain;
+	    }    
+	    .unlike{
+	    	background: url("../../img/default/like.svg") no-repeat center;
+	    	background-size: contain;
+	    }    
+	    .bookmark{
+	        height: 28px;
+	        width: 28px;
+	        cursor: pointer;
+	        padding: 0;
+	        opacity: 0.8;
+	        margin-left:10px
+	    }
+	    .bookmark:hover{
+	        background-color: rgb(233, 233, 233);
+	    }
+	    .icon-bookmark{
+	        background: url("../../img/default/fav_on.svg") no-repeat center;
+	        background-size: contain;
+	    }
+	    .icon-bookmark-off{
+	        background: url("../../img/default/fav.svg") no-repeat center;
+	        background-size: contain;
+	    }
+        .board-box .title{
+            /* Mobile Title size 20px */
+            font-size: 20px;
+            font-weight: bold;
+            outline: none;
+            padding: 0;
+        }
+        .board-box .span-box{
+            margin-left: 8px;
+        }
+
+        .board-box .span{
+            /* Mobile font-size 14px */
+            font-size: 14px;
+        }
+        
+        .regdate{
+        	color: gray;
+        }
+        .reply-writer{
+        	font-weight: 300;
+            color: #797979;
+        }
+        .board-box input{
+            height: 35px;
+            width: 100%;
+            font-family: "Noto Sans KR", "Roboto" !important;
+        }
+        .board-box textarea,
+        .reply-box textarea{
+            /* Mobile - Content size 14px */
+            font-size: 14px;
+            width: 100%;
+            font-family: "Noto Sans KR", "Roboto" !important;
+        }
+        .board-box input,
+        .board-box textarea,
+        .reply-box textarea{
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            
+            resize: none;
+        }
+        .reply-box button{
+            font-family: "Noto Sans KR", "Roboto" !important;
+            font-size: 14px;
+        }
+        .limit{
+        	display: flex;
+        	justify-content: flex-end;
+        	
+        	font-size: 12px;
+        	color: #797979;
+            font-family: "Noto Sans KR", "Roboto" !important;
+            
+            margin-top: 5px;
+        }
+        .limit > .text-limit{
+        
+        }
+        .board-box > .util-box{
+            display: flex;
+            
+            margin-top: 30px;
+            padding-bottom: 10px;
+            padding-right:10px;
+            width: 100%;
+            
+        }
+            .util-box > *{
+                display: flex;
+                flex-grow: 1;
+            }
+            .util-box *{
+                /* Mobile button font-size 14px */
+                font-size: 14px;
+            }
+            .util-box > * > *{
+                margin-right: 10px;
+            }
+            .util-box > .button-box{
+                justify-content: flex-end;
+            }
+    
+    /* Reply List Box */
+    .reply-list-box{
+    	position: relative;
+        margin-top: 30px;
+        border-radius: 10px;
+    }
+    	.button-register{
+    		margin-top: 5px;
+    	}
+        .reply-list-box .reply-box-title{
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .reply-list-box .reply-count{
+        	font-weight: bold;
+		    font-size: 17px;
+		    margin-left: 5px;
+        }
+        .reply-list-box .reply-list{
+            margin-top: 15px;
+            background-color: #fff;
+            padding-left: 10px;
+        }
+            .reply-list .replies{
+                margin-top: 20px;
+            }
+                .replies .reply{
+                    margin-bottom: 5px;
+                    font-size: 16px;
+                    
+                    word-break: break-all;
+                }
+        
+        .more-box{
+            display: flex;
+
+            margin-top: 10px;
+            padding: 5px 0;
+
+            justify-content: center;
+            align-items: center;
+            background-color: #c5c5c5;
+
+            opacity: 0.7;
+        }
+            .more-box .spinner{
+                transform: rotate(0);
+                transition: 1.5s;
+            }
+    /* Reply List Box */
+    
+/* Style Board - read */
+
+/* media Query (PC ver.) */
+@media screen and (min-width: 800px) {
+    .board-read-box{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        /* PC font-size 18px */
+        font-size: 18px;
+    }
+        .board-box{
+            flex-grow: 1;
+        }
+
+            .board-box .title{
+                /* PC Title size 23px */
+                font-size: 23px;
+                font-weight: bold;
+            }
+            .board-box input{
+                height: 38px;
+            }
+            .board-box textarea
+            /* PC Content 18px */{
+                font-size: 18px;
+            }
+            .board-box .span{
+                /* PC font-size 18px */
+                font-size: 18px;
+            }
+            .util-box *{
+                /* PC font-size 18px */
+                font-size: 18px;
+            }
+            .reply-box button{
+                
+                font-size: 18px;
+            }
+    /* Reply List Box */
+    .reply-list-box{
+        
+    }
+        .reply-list-box .reply-box-title{
+            font-size: 23px;
+        }
+            .replies .reply{
+                
+                font-size: 20px;
+            }
+            .replies .span{
+                /* PC font-size 18px */
+                font-size: 16px;
+            }
+    /* Reply List Box */
+
+}
+/* media Query (PC ver.) */
+  

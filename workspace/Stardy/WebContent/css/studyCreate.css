@@ -1,0 +1,275 @@
+html,body{
+    height: 100%;
+    width: 100%;
+}
+.img{
+    display: inline-block;
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+.float-content{
+    width:100%;
+    margin:40px auto;
+    height: 100%;
+    min-height:inherit;
+}
+.section-title{
+    margin: 10px;
+    margin-left: 40px;
+    flex-shrink: 0;
+}
+#banner{
+    line-height: 50px;
+}
+
+.visual_title{
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+    height: 70px;
+    border-radius: 5px;
+    background-color: #2b98ba;
+}
+.bg-section{
+    width: 100%;
+    background-color: #fcfbf9;
+}
+.jumbotron-img{
+    background-color: #eeeeee;
+    width: 100%;
+    background: url("../img/before_input_img.png")no-repeat center;
+    max-width: 1180px;
+    height:176px;
+    position: relative;
+    background-size: contain;
+}
+
+.camera{
+    background: url(../img/camera.png)no-repeat;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    position: absolute;
+    left: 50px;
+    top: 115px;
+}
+
+.input-create{
+    height:50px;
+    margin: auto 40px;
+    /* width: 1100px; */
+    width: 93% ;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    font-size: 16px;
+    color: rgba(205, 205, 205, 0.58);
+}
+
+.category ul{
+    display: flex;
+    height: 180px;
+    width: 93%;
+    background-color: #fff;
+    margin: auto 40px;
+}
+    .category li{
+        padding: 0 15px;
+        display: inline-flex;
+        margin:auto 20px;
+        width: 80px;
+        height:80px;
+        list-style: none;
+        align-items: center;
+        text-align: justify;
+        justify-content: center;
+        border-radius: 50%;
+        box-sizing: border-box;
+        background-color: rgba(205, 205, 205, 0.58);
+    }
+    .category li:hover{
+        background-color:
+        rgba(248, 118, 63, 0.75) ;
+    }
+.member-option{
+        display: flex;
+    }
+    .section-title{
+        display: inline-flex;
+        line-height: 30px;
+    }
+    .member-option li{
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+    }
+    .member-option input{
+        display: flex;
+        max-width: 100px;
+        height:30px;
+        margin-left: 69px;
+    }
+/* .check{
+    border: 1px solid rgba(205, 205, 205, 0.58);
+    안 먹힘.
+} */
+
+.due-date{
+    display: flex;
+
+    
+}
+.calendar{
+    width: 50%;
+    /* background: url("../img/ic_event_note_24px.png")no-repeat 450px; */
+    padding: 15px 0px;
+    color: rgba(205, 205, 205, 0.58);
+    border-style: inherit;
+    margin: 0 40px;
+}
+input[type=date]::-webkit-datetime-edit-text {
+    -webkit-appearance: none; display: none; 
+} 
+input[type=date]::-webkit-datetime-edit-month-field{
+-webkit-appearance: none; display: none; 
+} 
+input[type=date]::-webkit-datetime-edit-day-field {
+-webkit-appearance: none; display: none; 
+} 
+input[type=date]::-webkit-datetime-edit-year-field {
+-webkit-appearance: none; display: none; 
+}
+.introduce-study > input{
+    height: 100px;
+}
+.create-btn{
+display: flex;
+justify-content: center;
+}
+.img-create{
+    border: 0.5px solid  rgba(248, 118, 63, 0.75);
+    color: #fff;
+    background: rgba(248, 118, 63, 0.75);
+    display: flex;
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    text-align:center;
+    line-height: 50px;
+    padding: 0 22px;
+    margin-bottom: 40px;
+    margin: 2em auto;
+}
+.modi-btn{
+    border: 0.5px solid #2b98ba;
+    color: #fff;
+    background:#2b98ba;
+    display: flex;
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    text-align:center;
+    line-height: 50px;
+    padding: 0 22px;
+    margin-bottom: 40px;
+    margin: 2em auto;
+}
+
+.study-name{
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 800px){
+    .container-only{
+        margin:0 auto 0 auto;
+        max-width: none;
+        display: flex;
+    }
+    .section .inner{
+        max-width: none;
+        width: 100%;
+    }
+
+    .float-content{
+        width: 100%;
+        margin:20px auto;
+        max-width: none;
+        display: flex;
+    
+    }
+    .jumbotron-img{
+        margin:0 auto 0 auto;
+        max-width: none;
+        display: flex;
+        background:  rgba(205, 205, 205, 0.58);
+    }
+    .camera {
+        left: 30px;
+}
+    .section-title{
+        margin:0 auto 0 auto;
+        font-size: 80%;
+        margin:0;
+        display: inline-flex;
+        flex-shrink: 0;
+        width: 120px;
+    }
+
+
+.float-content{
+    margin:0 auto 0 auto;
+    display: inline-flex;
+    max-width: none;
+}
+/* .input-create, */
+.calendar,
+.choose{
+    margin: auto;
+    width: 50%;
+}
+input{
+    margin: 20px 40px !important;
+}
+.input-create {
+    width: 100% !important;
+}
+
+.visual_title{
+    /* max-width: none; */
+    padding:10px;
+    align-items: center;
+}
+.inner{
+    justify-content: center;
+}
+.input-create,
+.choose{
+    width: 80% !important;
+}
+
+.category li{
+    padding: 0 5px;
+    display: inline-flex;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 50px;
+    height:50px;
+    list-style: none;
+    align-items: center;
+    text-align: justify;
+    justify-content: center;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: rgba(205, 205, 205, 0.58);
+    font-size: 80%;
+    }
+
+.img-create, .modi-btn{
+    margin: 2em auto;
+}
+}

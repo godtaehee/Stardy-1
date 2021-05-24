@@ -1,0 +1,37 @@
+.find_container {
+  width: 300px;
+  height: 400px;
+  margin: 150px auto;
+}
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.find_form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.find_form li:nth-child(1) {
+  margin-top: 15px;
+}
+.find_form li:nth-child(2) {
+  margin-top: 15px;
+}
+.find_form li:nth-child(3) {
+  margin-top: 15px;
+}
+
+#btnChange {
+  display: flex;
+  margin-top: 10px;
+  width: 367px;
+  background: #8fb2e9 linear-gradient(to bottom, #cbf9ffb2, #a3e2ffa9 80%);
+  border: 0;
+}
+
+#btnChange:hover {
+  background: #8fb2e9 linear-gradient(to bottom, #cbf9ffb2, #68cefaa9 80%);
+}
