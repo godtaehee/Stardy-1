@@ -4,6 +4,8 @@ window.addEventListener("load", function() {
 	let isSub = window.isSub;
 	let isLike = window.isLike;
 
+	console.log('isLike : ' + isLike);
+
     let replyList = document.querySelector('.reply-list');		
     let moreBox = document.querySelector('.more-box');
 	let btnRegister = document.querySelector(".button-register");

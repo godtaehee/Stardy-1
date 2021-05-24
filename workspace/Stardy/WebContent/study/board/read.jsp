@@ -157,8 +157,8 @@
 <script>
 	window.loginId = '${id}';
 	window.id = '${boardView.id}';
-	window.isSub = '${isSub}';
-	window.isLike = '${isLike}';
+	window.isSub = ${isSub};
+	window.isLike = ${isLike};
 </script>
 <script src="../../js/mymodal/modal.js"></script>
 <script src="../../js/mypage/subModule.js"></script>
