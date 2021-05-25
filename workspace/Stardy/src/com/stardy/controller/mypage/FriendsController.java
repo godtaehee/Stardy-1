@@ -26,7 +26,7 @@ public class FriendsController extends HttpServlet{
 		
 		request.setAttribute("member", member);
 		
-		request.getRequestDispatcher("/mypage/friends.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/mypage/friends.jsp").forward(request, response);
 	}
 	
 	@Override

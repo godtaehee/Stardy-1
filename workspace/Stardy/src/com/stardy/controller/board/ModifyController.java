@@ -31,7 +31,7 @@ public class ModifyController extends HttpServlet{
 				
 		request.setAttribute("boardView", boardView);
 		
-		request.getRequestDispatcher("/study/board/modify.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/study/board/modify.jsp").forward(request, response);
 	}
 	
 	@Override

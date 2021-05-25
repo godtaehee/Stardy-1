@@ -38,7 +38,7 @@ public class ModifyController extends HttpServlet{
 		
 		request.setAttribute("member", member);
 		
-		request.getRequestDispatcher("/mypage/modify.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/mypage/modify.jsp").forward(request, response);
 	}
 	
 	@Override

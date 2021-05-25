@@ -29,7 +29,7 @@ public class LoginController extends HttpServlet{
 		if(msg != null)
 			request.setAttribute("msg", msg);
 		
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	}
 	
 	@Override

@@ -49,7 +49,7 @@ public class ReadController extends HttpServlet{
 		request.setAttribute("isSub", isSub);
 		request.setAttribute("isLike", isLike);
 		
-		request.getRequestDispatcher("/study/board/read.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/study/board/read.jsp").forward(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

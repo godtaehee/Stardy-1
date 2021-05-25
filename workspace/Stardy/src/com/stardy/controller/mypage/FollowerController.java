@@ -26,7 +26,7 @@ public class FollowerController extends HttpServlet{
 		
 		request.setAttribute("member", member);
 		
-		request.getRequestDispatcher("/mypage/follower.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/mypage/follower.jsp").forward(request, response);
 	}
 	
 	@Override

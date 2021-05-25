@@ -26,7 +26,7 @@ public class BookmarkController extends HttpServlet{
 		
 		request.setAttribute("member", member);
 		
-		request.getRequestDispatcher("/mypage/bookmark.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/mypage/bookmark.jsp").forward(request, response);
 	}
 	
 	@Override
