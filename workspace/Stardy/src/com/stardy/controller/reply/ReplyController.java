@@ -10,8 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -22,8 +20,6 @@ import com.stardy.entity.Reply;
 import com.stardy.entity.view.ReplyView;
 import com.stardy.service.ReplyServiceImpl;
 import com.stardy.util.Logger;
-
-import lombok.extern.log4j.Log4j;
 
 @WebServlet("/replies/*")
 public class ReplyController extends HttpServlet{
@@ -127,7 +123,7 @@ public class ReplyController extends HttpServlet{
 		while( (line = br.readLine()) != null )
 			sb.append(line);
 		
-		System.out.println(sb); //{"id":"39","content":"ㅎㅇㅎㅇawda"}
+		System.out.println(sb);
 		
 		try {
 			JSONParser parser = new JSONParser();

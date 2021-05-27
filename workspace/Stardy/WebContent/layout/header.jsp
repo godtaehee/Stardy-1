@@ -7,7 +7,7 @@
             <div class="menu">
                 <div class="logo flex">
                 
-                    <a href="/index2.jsp"><div class="icon"></div></a>
+                    <a href="/index2"><div class="icon"></div></a>
                 </div>
     
                 <div class="user-menu">
@@ -18,22 +18,22 @@
     
                     <div class="on-box hide">
                         <div class="user-item">
-                            <a class="btn show-study" href="/study/list.jsp">스터디 보기</a>
+                            <a class="btn show-study" href="/study/list">스터디 보기</a>
                         </div>
                         <div class="user-item">
-                            <a class="btn my-page" href="/mypage/friends.jsp">마이페이지</a>
+                            <a class="btn my-page" href="/mypage/friends">마이페이지</a>
                         </div>
  
                         <div class="drop-menu flex">
                             <div class="drop-list hide">
                                 <div class="drop-item">
-                                    <a href="#" class="btn-logout">로그아웃</a>
+                                    <a href="/login" class="btn-logout">로그아웃</a>
                                 </div>
                                 <div class="drop-item">
-		                            <a class="" href="/study/list.jsp">스터디 보기</a>
+		                            <a class="" href="/study/list">스터디 보기</a>
 		                        </div>
 		                        <div class="drop-item">
-		                            <a class="" href="/mypage/friends.jsp">마이페이지</a>
+		                            <a class="" href="/mypage/friends">마이페이지</a>
 		                        </div>
                                 <div class="drop-item">
                                     <a href="#">설정</a>
@@ -47,10 +47,10 @@
     
                     <div class="out-box">
                         <div class="">
-                            <a class="header-login btn" href="/login.jsp">로그인</a>
+                            <a class="header-login btn" href="/login">로그인</a>
                         </div>
                         <div class="">
-                            <a class="header-signup btn" href="/signup.jsp">회원가입</a>
+                            <a class="header-signup btn" href="/signup">회원가입</a>
                         </div>
                     </div>
                 </div>

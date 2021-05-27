@@ -51,6 +51,6 @@ public class ModifyController extends HttpServlet{
 		
 		boardService.modify(board);
 		
-		response.sendRedirect("/board/read.jsp?id=" + id);
+		response.sendRedirect("/WEB-INF/views/study/board/read.jsp?id=" + id);
 	}
 }

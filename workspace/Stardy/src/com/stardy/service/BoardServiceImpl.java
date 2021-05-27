@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 import com.stardy.entity.Board;
-<<<<<<< HEAD
 import com.stardy.entity.Member;
+import com.stardy.entity.view.BoardListContent;
 import com.stardy.entity.view.BoardView;
 import com.stardy.util.DatabaseUtil;
 import com.stardy.util.Logger;
@@ -103,7 +103,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		List<BoardListContent> list = new ArrayList<BoardListContent>();
 		
-		String sql = "SELECT * FROM BOARD_LIST_CONTENT WHERE STUDY_ID = ?";
+		String sql = "SELECT * FROM BOARD_VIEW_CONTENT WHERE STUDY_ID = ?";
 		
 		try {
 			

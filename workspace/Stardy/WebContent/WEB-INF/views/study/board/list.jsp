@@ -69,7 +69,7 @@ style="display:<%if(success.equals("0")){%>none<%}else{%>flex<%}%>">
                         <li class="btn">고시/공무원</li>
                         <li class="btn">취미/교양</li>
                         <li class="btn">기타</li>
-                        <a href="../create.jsp">
+                        <a href="create">
                             <li class="btn btn--primary">스터디 개설하기</li>
                         </a>
                     </ul>
@@ -91,7 +91,7 @@ style="display:<%if(success.equals("0")){%>none<%}else{%>flex<%}%>">
 
             <div class="desc">
                 <div class="text">
-                    <div class="category">${n.category}</div>
+                    <div class="category">${n.name}</div>
                     <div class="title">${n.title}</div>
                     <div class="note">${n.intro}</div>
                 </div>
@@ -108,7 +108,7 @@ style="display:<%if(success.equals("0")){%>none<%}else{%>flex<%}%>">
 
                     <div class="date">
                         <p>개설일 : </p>
-                        <p> ${n.regdate}</p>
+                        <p> ${n.regDate}</p>
 
                         <p>모집 종료일 : </p>
                         <p> 2021-04-12</p>

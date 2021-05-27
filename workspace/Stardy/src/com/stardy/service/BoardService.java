@@ -3,6 +3,7 @@ package com.stardy.service;
 import java.util.List;
 
 import com.stardy.entity.Board;
+import com.stardy.entity.view.BoardListContent;
 import com.stardy.entity.view.BoardView;
 import com.stardy.util.DatabaseUtil;
 import com.stardy.util.Logger;

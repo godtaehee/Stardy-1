@@ -1,13 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%
-
-int memberId = (int) request.getSession().getAttribute("id");
-/* String id = request.getParameter("id"); */
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,15 +40,15 @@ int memberId = (int) request.getSession().getAttribute("id");
                         <p class="section-title" id="banner">스터디 개설</p>
                     </div>
                    	<!-- 폼태그폼태 폼태그폼태 폼태그폼태 폼태그폼태 폼태그폼태 폼태그폼태 -->
-            	<form action="target" method="POST">
+            	<form action="target" method="post" enctype="multipart/form-data">
             		<input type="hidden" class="category" name="category">
-            		<input type="hidden" name="memberId" value="<%=memberId%>">
+            		<input type="hidden" name="memberId" value="${memberId }">
             		   <section class="bg-section">
                         <div class="jumbotron-img">
                             <div class="d-none">이미지</div>
                            	<div class="jumbotron-img-container"></div>
                             <label class="camera">
-                           	    <input type="file" style="visibility:hidden" accept="image/*" onchange="setThumbnail(event)"/>
+                           	    <input type="file" style="visibility:hidden" name="imgFile" accept="image/*" onchange="setThumbnail(event)"/>
                            	</label>
                         </div>
                         <div class="study-name float-content flex-column">

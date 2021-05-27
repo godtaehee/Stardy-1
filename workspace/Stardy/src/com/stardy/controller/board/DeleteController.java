@@ -47,6 +47,6 @@ public class DeleteController extends HttpServlet{
 			boardService.delete(id);
 		}
 		
-		response.sendRedirect("/study/list.jsp?sid=" + board.getStudyId());
+		response.sendRedirect("/WEB-INF/views/study/list?sid=" + board.getStudyId());
 	}
 }

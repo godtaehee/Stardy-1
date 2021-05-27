@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet{
 		if(msg != null)
 			request.setAttribute("msg", msg);
 		
-		//request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	}
 	
 	@Override
@@ -58,7 +58,7 @@ public class LoginController extends HttpServlet{
 			request.getSession().setAttribute("id", result.getId());
 			
 			request.setAttribute("msg", "success");
-			response.sendRedirect("/index2.jsp");
+			response.sendRedirect("/index2");
 		}
 		else {
 			request.setAttribute("msg", "fail");
