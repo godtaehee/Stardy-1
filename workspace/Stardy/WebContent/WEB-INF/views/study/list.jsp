@@ -129,7 +129,6 @@ style="display:<%if(success.equals("0")){%>none<%}else{%>flex<%}%>">
 <c:set var="page" value ="${(param.p==null)?1:param.p}" />
 <c:set var="startNum" value ="${page-(page-1)%5}"/>
 <c:set var="lastNum" value ="${fn:substringBefore(Math.ceil(total/10),'.')}"/>
-<div>${lastNum}</div>
         <nav class="pager">
             <h1 class="d-none">페이저</h1>
             <c:if test="${startNum > 1}">
