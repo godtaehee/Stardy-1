@@ -1,13 +1,7 @@
 package com.stardy.controller.study;
 
 import java.io.IOException;
-import java.sql.Connection;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -17,83 +11,55 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.stardy.entity.view.StudyView;
-import com.stardy.util.DatabaseUtil;
+
+import com.stardy.service.StudyService;
+import com.stardy.service.StudyServiceImpl;
 
 @WebServlet("/study/list")
 public class StudyListController extends HttpServlet {
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		List<StudyView> list = new ArrayList<>();
 
-		String sql ="SELECT * FROM STUDY_VIEW";
-		Connection con = DatabaseUtil.getConnection();
-		int count=0;
-		
-		try {
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-			
-			while(rs.next()) {
-				   int id = rs.getInt("ID");
-				   String title = rs.getString("TITLE");
-				   String intro = rs.getString("INTRO");
-				   String open = rs.getString("OPEN");
-				   String limit = rs.getString("LIMIT");
-				      
-				   Date regDate = rs.getDate("REGDATE");
-				   Date updateDate = rs.getDate("UPDATEDATE");
-				   Date dueDate = rs.getDate("DUEDATE");
-				      
-				   String bg = rs.getString("BG");
-				   String path = rs.getString("PATH");
-				      
-				   int memberId = rs.getInt("MEMBER_ID");
-				   int categoryId = rs.getInt("CATEGORY_ID");
-				   
-				   int cnt=rs.getInt("CNT");
-				   String name = rs.getString("NAME");
-				   
-				   
-				   StudyView studyView = StudyView.builder()
-						   .id(id)
-						   .title(title)
-						   .intro(intro)
-						   .open(open)
-						   .limit(limit)
-						   .regDate(regDate)
-						   .updateDate(updateDate)
-						   .dueDate(dueDate)
-						   .bg(bg)
-						   .path(path)
-						   .memberId(memberId)
-						   .categoryId(categoryId)
-						   .cnt(cnt)
-						   .name(name)
-						   .build();
-   				   
-				   list.add(studyView);
-				   count++;
-				  
-			}
-			System.out.println("스터디 개수 : "+count);
-			rs.close();
-			st.close();
-			con.close();
-			
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		
-		request.setAttribute("list", list);
-		
-		request
-		.getRequestDispatcher("/study/list.jsp")
-		.forward(request, response);
-		
-	}	
+
+   @Override
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {      
+      
+      //카테고리 
+      String category_=request.getParameter("c");
+      //검색
+      String query_=request.getParameter("q");
+      //페이지
+      String page_=request.getParameter("p");
+      
+      String category ="";
+      if(category_ !=null)
+         category = category_;
+      
+      String query ="";
+      if(query_ !=null)
+         query = query_;
+      
+      int page = 1;
+      if(page_ !=null && !page_.equals(""))
+         page =Integer.parseInt(page_);
+      
+      StudyService service = new StudyServiceImpl();
+      
+      //검색,카테고리 없는 첫번째 페이지
+      
+      List<StudyView>list = service.getList(category,query,page);
+      
+      //페이징할 숫자를 가져옴
+      int total=service.paging(category,query);
+
+      request.setAttribute("total", total);
+      request.setAttribute("list", list);
+      
+      request
+      .getRequestDispatcher("/WEB-INF/views/study/list.jsp")
+      .forward(request, response);
+      
+      
+
+   }
 
 }
-

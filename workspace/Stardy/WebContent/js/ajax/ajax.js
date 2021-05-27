@@ -66,10 +66,10 @@ function ajax(obj){
 	});
 	
 	/* 진행 */
-	xhr.upload.addEventListener('progress', function() {
+	xhr.upload.addEventListener('progress', function(e) {
 		
 		if(obj.progress){
-			obj.progress(xhr);
+			obj.progress(e);
 		}
 	});
 	
