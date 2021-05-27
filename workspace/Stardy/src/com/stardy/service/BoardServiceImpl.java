@@ -9,8 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.stardy.entity.Board;
-
-
+import com.stardy.entity.Files;
 import com.stardy.entity.Member;
 import com.stardy.entity.view.BoardListContent;
 import com.stardy.entity.view.BoardView;
@@ -309,5 +308,61 @@ public class BoardServiceImpl implements BoardService{
 		
 		return result;
 	}
+
+	@Override
+	public int write(Board board, List<Files> files) {
+		
+		int flag = 0;
+		
+		/* Board */
+		String sql = "INSERT INTO BOARD(TITLE, CONTENT, MEMBER_ID, STUDY_ID) VALUES (?, ?, ?, ?)";
+		String fileSql = "INSERT INTO FILES(ID, NAME, PATH, BOARD_ID) VALUES (?, ?, ?, BOARD_SEQ.CURRVAL)";
+		
+		PreparedStatement filePstmt = null;
+		
+		try (
+			Connection con = DatabaseUtil.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			)
+		{	
+			
+			con.setAutoCommit(false);
+			
+			pstmt.setString(1, board.getTitle());
+	        pstmt.setString(2, board.getContent());
+	        pstmt.setInt(3, board.getMemberId());
+	        pstmt.setInt(4, board.getStudyId());
+
+	        flag = pstmt.executeUpdate();
+	        //board insert end
+	        //-----------------
+	        //file insert start
+			if(!files.isEmpty() && files.size() > 0) {
+				
+				filePstmt = con.prepareStatement(fileSql);
+				
+				for(int i=0; i<files.size(); i++) {
+					filePstmt.setString(1, files.get(i).getUuid());
+					filePstmt.setString(2, files.get(i).getName());
+					filePstmt.setString(3, files.get(i).getPath());
+					
+					filePstmt.executeUpdate();
+				}
+			}
+	        
+	        con.commit();
+	        
+	        if(filePstmt != null)
+	        	filePstmt.close();
+	        
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+
+		return flag;
+	}
+	
+	
 }
 

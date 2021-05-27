@@ -94,6 +94,18 @@
         	cursor: pointer;
         	font-size: 25px;
         }
+        .upload-box{
+        	border-radius: 40%;
+        }
+        .valid{
+        	background-color: green;
+			opacity: 0.5;
+			
+        }
+        .invalid{
+			background-color: red;
+			opacity: 0.5;
+        }
 /* Profile Box */
 /* Content Box */
 .menu-underline{
@@ -196,6 +208,7 @@
             .profile-icon{
                 width: 228px;
                 height: 228px;
+                border: 1px solid #d0d0d0;
             }
     /* Profile Box */
     /* Content-Box */

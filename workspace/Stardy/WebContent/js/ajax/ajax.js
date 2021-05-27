@@ -66,7 +66,7 @@ function ajax(obj){
 	});
 	
 	/* 진행 */
-	xhr.addEventListener('progress', function() {
+	xhr.upload.addEventListener('progress', function() {
 		
 		if(obj.progress){
 			obj.progress(xhr);

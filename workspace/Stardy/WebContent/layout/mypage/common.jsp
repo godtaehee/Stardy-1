@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <%
 String paths = request.getServletPath();
@@ -14,8 +13,14 @@ System.out.println(current);
                     <h1 class="hide">프로필 박스</h1>
                     <div class="dummy-box"></div>
                     <div class="profile-icon-box">
-                    	<div class="upload-box"></div>
-                        <img class="profile-icon" src="../img/icon-person-dummy.png" alt="profile icon">
+                    	<div class="upload-box"><!-- ../img/icon-person-dummy.png -->
+                    	<c:if test="${profile == null || profile == ''}">
+                        <img class="profile-icon" src="../img/detail/profile-icon.svg" alt="profile icon">
+                        </c:if>
+                        <c:if test="${profile != null && profile != ''}">
+                        <img class="profile-icon" src="/upload/${path}/${profile}" alt="profile icon">
+                        </c:if>
+                        </div>
                         <span class="button-upload hide">+</span>
                         <input class="hide" type="file" name="uploadFile">
                     </div>

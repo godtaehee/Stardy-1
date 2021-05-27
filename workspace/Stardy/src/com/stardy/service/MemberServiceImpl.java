@@ -46,7 +46,7 @@ public class MemberServiceImpl implements MemberService{
 	/* 멤버 정보 조회 */
 	public Member get(int id) {
 
-		String sql = "SELECT * FROM MEMBER WHERE ID = ?";
+		String sql = "SELECT * FROM MEMBER WHERE ID = ? AND ENABLE = 1";
 		Member member = null;
 		
 		try {
@@ -91,7 +91,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	public Member login(String email, String password) {
 		
-		String sql = "SELECT * FROM MEMBER WHERE EMAIL = ? AND PASSWORD = ?";
+		String sql = "SELECT * FROM MEMBER WHERE EMAIL = ? AND PASSWORD = ? AND ENABLE = 1";
 		Member result = null;
 		
 		try {
@@ -107,8 +107,15 @@ public class MemberServiceImpl implements MemberService{
 				
 				String nickname = rs.getString("NICKNAME");
 				int id = rs.getInt("ID");
+				String path = rs.getString("PATH");
+				String profile = rs.getString("PROFILE");
 				
-				result = Member.builder().id(id).nickname(nickname).build();
+				result = Member.builder()
+						.id(id)
+						.nickname(nickname)
+						.profile(profile)
+						.path(path)
+						.build();
 			}
 			
 			rs.close();
@@ -156,7 +163,7 @@ public class MemberServiceImpl implements MemberService{
    /* 사용자 정보 수정 */
    public void modify(Member member) {
 			   
-      String sql = "UPDATE MEMBER SET NICKNAME = ?, PASSWORD = ?, STATUS = ? WHERE ID = ?";
+      String sql = "UPDATE MEMBER SET NICKNAME = ?, PASSWORD = ?, STATUS = ?, PROFILE = ?, PATH = ? WHERE ID = ?";
 
       try {
          Connection con = DatabaseUtil.getConnection();
@@ -165,7 +172,9 @@ public class MemberServiceImpl implements MemberService{
          ptst.setString(1, member.getNickname());
          ptst.setString(2, member.getPassword());
          ptst.setString(3, member.getStatus());
-         ptst.setInt(4, member.getId());
+         ptst.setString(4, member.getProfile());
+         ptst.setString(5, member.getPath());
+         ptst.setInt(6, member.getId());
          
          int result = ptst.executeUpdate();
          
@@ -182,7 +191,7 @@ public class MemberServiceImpl implements MemberService{
    /* 회원탈퇴 */
    public void deleteUser(int id) {
 		
-	   String sql = "UPDATE MEMBER SET NICKNAME = NULL, EMAIL = NULL, PASSWORD = NULL, ENABLE = 0, PROFILE = NULL, PATH = NULL WHERE ID = ?";
+	   String sql = "UPDATE MEMBER SET NICKNAME = '탈퇴한 사용자', EMAIL = '', PASSWORD = NULL, ENABLE = 0, PROFILE = NULL, PATH = NULL WHERE ID = ?";
 
 	      try {
 	         Connection con = DatabaseUtil.getConnection();

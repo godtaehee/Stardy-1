@@ -73,7 +73,7 @@
 	                    </div>
                         <div class="button-box">
                             <h1 class="hide">버튼 박스</h1>
-                            <a href="/study/detail?id=${boardView.studyId }" class="btn button button-back">목록</a>
+                            <a href="/study/board/detail?id=${boardView.studyId }" class="btn button button-back">목록</a>
                             
                             <c:if test="${id eq boardView.memberId }">
                             <a href="modify?id=${boardView.id }" class="btn button button-modify">수정하기</a>
