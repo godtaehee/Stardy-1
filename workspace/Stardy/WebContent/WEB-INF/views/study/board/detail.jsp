@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -245,14 +244,14 @@
                         <div class="write-hand"></div>
                         <div class="write-content">글을 작성해주세요.</div>
                     </div>
-                    <form class="modal-body" action="/study/write" method="post">
-                    	<input type="hidden" name="id" value=${memberId}>
+                    <form class="modal-body" action="/study/write" method="post" enctype="multipart/form-data">
+                    	<input type="text" name="id" value="${memberId}">
+                    	<input type="text" name="sId" value="${study.id}">
                         <input class="modal-title" type="text" name="title" placeholder="제목을 입력하세요">
-                        <input type="file" name="f" class="board-fild" style="display:none">
-                        <div style="width:100px; height:40px; background-color:#3ca0bf; color:white; display:flex; justify-content:center; align-items:center" onclick="document.all.file.click()" >
+                        <input type="file" name="uploadFile" class="board-fild" style="display:none" multiple>
+                        <div style="width:100px; height:40px; background-color:#3ca0bf; color:white; display:flex; justify-content:center; align-items:center" >
                         	파일 올리기
                         </div>
-                      
                         <textarea class="modal-content" cols="30" rows="10" name="content"></textarea>
                         <div class="modal-footer">
                             <button type="submit">작성</button>
