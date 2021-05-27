@@ -33,9 +33,9 @@ public class DetailController extends HttpServlet {
 
         int memberId = (int) request.getSession().getAttribute("id");
         
-        ServletContext app = request.getServletContext();
         
-        String path = app.getRealPath("/upload");
+        
+
 
 
         StudyService studyService = new StudyServiceImpl();
@@ -54,7 +54,9 @@ public class DetailController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+        
+        ServletContext app = request.getServletContext();
+        String path = "/upload";
         path += File.separator;
         path += study.getPath();
         path += File.separator;

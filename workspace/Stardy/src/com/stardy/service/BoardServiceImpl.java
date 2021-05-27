@@ -50,55 +50,6 @@ public class BoardServiceImpl implements BoardService{
 		return nickName;
 
 	}
-	/* 게시글의 좋아요 증가 */
-//	public int incLike(int bid) {
-//		
-//		String sql = "UPDATE BOARD SET LIKES = LIKES + 1 WHERE BID = ?";
-//		int result = 0;
-//		
-//		try {
-//			Connection con = DatabaseUtil.getConnection();
-//			PreparedStatement ptst = con.prepareStatement(sql);
-//						
-//			ptst.setInt(1, bid);
-//			
-//			result = ptst.executeUpdate();
-//			log.info("[" + bid +"] 번 게시글에 좋아요가 증가되었습니다.");
-//			
-//			ptst.close();
-//			con.close();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		return result;
-//	}
-	
-	/* 게시글의 좋아요 감소 */
-//	public int decLike(int bid) {
-//		
-//		String sql = "UPDATE BOARD SET LIKES = LIKES - 1 WHERE BID = ?";
-//		int result = 0;
-//		
-//		try {
-//			Connection con = DatabaseUtil.getConnection();
-//			PreparedStatement ptst = con.prepareStatement(sql);
-//						
-//			ptst.setInt(1, bid);
-//			
-//			result = ptst.executeUpdate();
-//			log.info("[" + bid +"] 번 게시글에 좋아요가 감소되었습니다.");
-//			
-//			ptst.close();
-//			con.close();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		return result;
-//	}
 	
 	/* 특정 스터디의 게시글 목록 */
 	public List<BoardListContent> getList(int sid) {

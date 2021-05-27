@@ -33,5 +33,4 @@ public interface BoardService {
 	 
 	 /* 게시글 작성 */
 	 int write(Board board, List<Files> file);
->>>>>>> refs/remotes/real/master
 }

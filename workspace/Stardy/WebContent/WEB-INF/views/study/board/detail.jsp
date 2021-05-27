@@ -57,7 +57,7 @@
         </aside>
 
 
-        <section class="jumbotron" style="background: url('${path}') no-repeat center center;">
+        <section class="jumbotron" style="background: url('${path}') no-repeat center center; background-size:cover">
             <h1 class="hide">jumbo</h1>
             <div class="jumbotron-text">
                 <div class="title-container">

@@ -6,6 +6,7 @@ import com.stardy.service.StudyService;
 import com.stardy.service.StudyServiceImpl;
 import com.stardy.util.DatabaseUtil;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,6 +52,8 @@ public class StudyIndexController extends HttpServlet {
             myStudy = new ArrayList<>();
             notInStudy = new ArrayList<>();
         }
+        
+
 
         request.setAttribute("memberId", memberId);
         request.setAttribute("myStudy", myStudy);

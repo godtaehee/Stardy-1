@@ -185,7 +185,7 @@
                                         <li class="mini-card">
                                             <a href="study/board/detail?id=${myStudy.id}">
                                                 <div class="mini-card-container" >
-                                                    <div class="mini-card-img" style="background:url('/upload/${myStudy.path}/${myStudy.bg}') center center no-repeat"></div>
+                                                    <div class="mini-card-img" style="background:url('/upload/${myStudy.path}/${myStudy.bg}') center center no-repeat; background-size:cover"></div>
                                                     <div class="mini-card-title">${myStudy.title}</div>
                                                     <div class="mini-card-info">
                                                         <div class="mini-card-population">정원 ${myStudy.cnt}/${myStudy.limit}명</div>

@@ -118,7 +118,7 @@ public class StudyController extends HttpServlet {
 	        studyService.insertJoinedStudy(memberId,title);
 
 	        if(flag == 1)
-	        	request.getRequestDispatcher("/WEB-INF/views/study/board/list.jsp?success=1").forward(request,response);
+	        	request.getRequestDispatcher("/WEB-INF/views/study/list.jsp?success=1").forward(request,response);
 
 	}
 
