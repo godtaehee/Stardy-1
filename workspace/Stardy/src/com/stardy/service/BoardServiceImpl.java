@@ -53,20 +53,20 @@ public class BoardServiceImpl implements BoardService{
 	
 	/* 특정 스터디의 게시글 목록 */
 	public List<BoardListContent> getList(int sid) {
-		
+
 		List<BoardListContent> list = new ArrayList<BoardListContent>();
-		
-		String sql = "SELECT * FROM BOARD_LIST_CONTENT WHERE STUDY_ID = ?";
-		
+
+		String sql = "SELECT * FROM BOARD_VIEW_CONTENT WHERE STUDY_ID = ?";
+
 		try {
-			
+
 			Connection con = DatabaseUtil.getConnection();
 			PreparedStatement ptst = con.prepareStatement(sql);
-			
+
 			ptst.setInt(1, sid);
-			
+
 			ResultSet rs = ptst.executeQuery();
-			
+
 			while(rs.next()) {
 				int id = rs.getInt("ID");
 				String title = rs.getString("TITLE");
@@ -81,10 +81,9 @@ public class BoardServiceImpl implements BoardService{
 
 
 				BoardListContent board = new BoardListContent(id, title, content, regDate, memberId, studyId, updateDate, likes, name, replyCnt);
-
 				list.add(board);
 			}
-			
+
 			rs.close();
 			ptst.close();
 			con.close();
@@ -92,7 +91,7 @@ public class BoardServiceImpl implements BoardService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
 	

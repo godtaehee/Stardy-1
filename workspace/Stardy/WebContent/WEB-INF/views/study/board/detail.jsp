@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -57,7 +57,15 @@
         </aside>
 
 
-        <section class="jumbotron" style="background: url('${path}') no-repeat center center; background-size:cover">
+
+		<c:choose>
+	    	<c:when test="${null ne study.bg}">
+    			<section class="jumbotron" style="background: url('${path}') no-repeat center center; background-size:80% 80%">
+    		</c:when>
+     		<c:otherwise>
+     			<section class="jumbotron">
+     		</c:otherwise>
+		</c:choose>   
             <h1 class="hide">jumbo</h1>
             <div class="jumbotron-text">
                 <div class="title-container">
@@ -238,7 +246,11 @@
                     <form class="modal-body" action="/study/write" method="post">
                     	<input type="hidden" name="id" value=${memberId}>
                         <input class="modal-title" type="text" name="title" placeholder="제목을 입력하세요">
-                        <input type="file" name="f">
+                        <input type="file" name="f" class="board-fild" style="display:none">
+                        <div style="width:100px; height:40px; background-color:#3ca0bf; color:white; display:flex; justify-content:center; align-items:center" onclick="document.all.file.click()" >
+                        	파일 올리기
+                        </div>
+                      
                         <textarea class="modal-content" cols="30" rows="10" name="content"></textarea>
                         <div class="modal-footer">
                             <button type="submit">작성</button>

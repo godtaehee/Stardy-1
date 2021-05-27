@@ -55,6 +55,7 @@ public class StudyController extends HttpServlet {
 
 		// 내가 올린 파일 이름
 		String fileName = fPart.getSubmittedFileName();
+		System.out.println("빈 ㄴㅇㄹㅁㄴㄹㄴㅁ" + fileName);
 
 		// 입력을 위한 InputStream 생성
 		InputStream fis = fPart.getInputStream();
@@ -67,6 +68,8 @@ public class StudyController extends HttpServlet {
 
 
 		String realFileName = uuid + "_" + fileName;
+		if(fileName.equals(""))
+			realFileName = null;
 		String dayPath = uploadUtil.createFilePath();
 		String realPath = File.separator + dayPath;
 
