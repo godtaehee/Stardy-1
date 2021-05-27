@@ -316,7 +316,7 @@ body {
 .mini-card-img {
     width: 150px;
     height:  80px;
-    background: url("../img/detail/evan-banner.png") no-repeat;
+    background: url("../img/default/default.jpeg") no-repeat;
     background-size: cover;
 }
 

@@ -1,37 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@page import="com.stardy.service.StudyServiceImpl" %>
-<%@ page import="com.stardy.entity.Study" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.stardy.entity.Category" %>
-<%@ page import="com.stardy.entity.view.StudyView" %>
-<%@ page import="com.stardy.service.*" %>
 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%
-	int memberId = 0;
-
-	if(request.getSession().getAttribute("id") != null)
-		memberId = (int) request.getSession().getAttribute("id");
-
-    IndexService indexService = new IndexServiceImpl();
-    
-    List<StudyView> myStudy = null;
-    List<StudyView> notInStudy = null;
-    boolean haveStudy = false;
-    
-	if(memberId != 0){
-		myStudy = indexService.getMyStudyList(memberId);
-		notInStudy = indexService.getStudyListNotMember(memberId);
-		haveStudy = (myStudy.size() == 0) ? false : true;
-	}
-	
-	if(memberId == 0) {
-		haveStudy = false;
-		notInStudy = indexService.getStudyList();
-	}
-
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -193,38 +163,48 @@
                     </div>
                 </div>
             </div>
+            
 
             <div class="study-list">
                     <div class="study-list-header">
                         <div class="study-title">내 스터디 목록</div>
-                        <a href="study/board/list.jsp"><div class="arrow"></div></a>
+                        <a href="study/list"><div class="arrow"></div></a>
                     </div>
                     <div class="study-list-desc">스터디룸에 입장해보세요</div>
                     <div class="study-list-item">
                         <div class="prev-btn"></div>
                         <ul class="study-list-container">
-                        <%if(request.getSession().getAttribute("id") == null || !haveStudy) {%>
-                        	<li class="notMember">
-                        		<span>아직 가입한 스터디가 없습니다!</span>
-                        	</li>
-                        	<%} else { %>
-
-                            <%for(int i = 0; i < myStudy.size(); i++) {%>
-                            <li class="mini-card">
-                                <a href="study/board/detail.jsp?id=<%=String.valueOf(myStudy.get(i).getId())%>">
-                                    <div class="mini-card-container" >
-                                        <div class="mini-card-img"></div>
-                                        <div class="mini-card-title"><%=myStudy.get(i).getTitle()%></div>
-                                        <div class="mini-card-info">
-                                            <div class="mini-card-population">정원 <%=myStudy.get(i).getCnt()%>/<%=myStudy.get(i).getLimit()%>명</div>
-                                            <div class="mini-card-kind"><%=myStudy.get(i).getName()%></div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <%}
-                            }%>
-                   
+                     <c:choose>
+                                <c:when test="${id eq 0 || !haveStudy}">
+                                    <li class="notMember">
+                                        <span>아직 가입한 스터디가 없습니다!</span>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach var="myStudy" items="${myStudy}">
+                                        <li class="mini-card">
+                                            <a href="study/board/detail?id=${myStudy.id}">
+                                                <div class="mini-card-container" >
+                                                	<c:choose>
+                                                	    <c:when test="${null ne myStudy.bg}">
+                                                    		<div class="mini-card-img" style="background:url('/upload/${myStudy.path}/${myStudy.bg}') center center no-repeat; background-size:cover"></div>
+                                                    	</c:when>
+	                                                    <c:otherwise>
+	                                                    	<div class="mini-card-img"></div>
+	                                                    </c:otherwise>
+                                                	</c:choose>
+                             
+                                                    <div class="mini-card-title">${myStudy.title}</div>
+                                                    <div class="mini-card-info">
+                                                        <div class="mini-card-population">정원 ${myStudy.cnt}/${myStudy.limit}명</div>
+                                                        <div class="mini-card-kind">${myStudy.name}</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                         <div class="after-btn"></div>
                     </div>
@@ -237,22 +217,22 @@
                 <div class="study-list-desc">곧 모집이 마감되는 스터디에요! 개설된 스터디는 '스터디 보기' 메뉴에서 조회할 수있어요</div>
                 <div class="study-list-item">
                     <div class="prev-btn"></div>
-                    <ul class="study-list-container">               
-                       <%for(int i = 0; i < notInStudy.size(); i++) {%>
+                    <ul class="study-list-container">
+                        <c:forEach var="notInStudy" items="${notInStudy}">
                             <li class="mini-card">
-                                <a href="study/board/detail.jsp?id=<%=String.valueOf(notInStudy.get(i).getId())%>">
+                                <a href="study/board/detail?id=${notInStudy.id}">
                                     <div class="mini-card-container">
-                                        <div class="mini-card-img"></div>
-                                        <div class="mini-card-title"><%=notInStudy.get(i).getTitle()%></div>
+                                        <div class="mini-card-img" style="background:url('/upload/${notInStudy.path}/${notInStudy.bg}') center center no-repeat"></div>
+                                        <div class="mini-card-title">${notInStudy.title}</div>
                                         <div class="mini-card-info">
-                                            <div class="mini-card-population">정원 <%=notInStudy.get(i).getCnt()%>/<%=notInStudy.get(i).getLimit()%>명</div>
-                                            <div class="mini-card-kind"><%=notInStudy.get(i).getName()%></div>
-
+                                            <div class="mini-card-population">정원 ${notInStudy.cnt}/${notInStudy.limit}명</div>
+                                            <div class="mini-card-kind">${notInStudy.name}</div>
                                         </div>
                                     </div>
                                 </a>
                             </li>
-                       <%}%>
+                        </c:forEach>
+
                     </ul>
                     <div class="after-btn"></div>
                 </div>

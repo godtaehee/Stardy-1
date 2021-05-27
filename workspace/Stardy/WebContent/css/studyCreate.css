@@ -38,7 +38,6 @@ html,body{
 .jumbotron-img{
     background-color: #eeeeee;
     width: 100%;
-    background: url("../img/before_input_img.png")no-repeat center;
     max-width: 1180px;
     height:176px;
     position: relative;
@@ -67,7 +66,7 @@ html,body{
     outline: none;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
     font-size: 16px;
-    color: rgba(205, 205, 205, 0.58);
+
 }
 
 .category ul{
@@ -80,7 +79,7 @@ html,body{
     .category li{
         padding: 0 15px;
         display: inline-flex;
-        margin:auto 20px;
+        margin:auto;
         width: 80px;
         height:80px;
         list-style: none;
@@ -127,22 +126,11 @@ html,body{
     width: 50%;
     /* background: url("../img/ic_event_note_24px.png")no-repeat 450px; */
     padding: 15px 0px;
-    color: rgba(205, 205, 205, 0.58);
+    
     border-style: inherit;
     margin: 0 40px;
 }
-input[type=date]::-webkit-datetime-edit-text {
-    -webkit-appearance: none; display: none; 
-} 
-input[type=date]::-webkit-datetime-edit-month-field{
--webkit-appearance: none; display: none; 
-} 
-input[type=date]::-webkit-datetime-edit-day-field {
--webkit-appearance: none; display: none; 
-} 
-input[type=date]::-webkit-datetime-edit-year-field {
--webkit-appearance: none; display: none; 
-}
+
 .introduce-study > input{
     height: 100px;
 }

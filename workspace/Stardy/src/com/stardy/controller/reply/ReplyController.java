@@ -128,6 +128,7 @@ public class ReplyController extends HttpServlet{
 			sb.append(line);
 		
 		System.out.println(sb); //{"id":"39","content":"ㅎㅇㅎㅇawda"}
+>>>>>>> refs/remotes/real/master
 		
 		try {
 			JSONParser parser = new JSONParser();

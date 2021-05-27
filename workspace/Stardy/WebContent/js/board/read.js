@@ -78,6 +78,7 @@ window.addEventListener("load", function() {
 			    /* 즐겨찾기 해제 */
 		    	isSub = !isSub;
 				alert(`${id}번 게시글 즐겨찾기가 취소되었습니다.`);
+
 			});
 	});
 /* 좋아요 */

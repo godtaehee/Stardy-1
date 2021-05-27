@@ -59,6 +59,7 @@ public class SubController extends HttpServlet{
 			
 			out.println(json);
 		}
+>>>>>>> refs/remotes/real/master
 	}
 	
 	@Override

@@ -189,35 +189,11 @@ public class BookmarkServiceImpl implements BookmarkService{
 		return list;
 	}
 
+
 	@Override
-	public int getTotal(int memberId) {
-		
-		String sql = "SELECT COUNT(BOARD_ID) CNT FROM SUB WHERE MEMBER_ID = ?";
-		int count = -1;
-		
-		try {
-			Connection con = DatabaseUtil.getConnection();
-			PreparedStatement ptst = con.prepareStatement(sql);
-			
-			ptst.setInt(1, memberId);
-			
-			ResultSet rs = ptst.executeQuery();
-			
-			while(rs.next()) 
-				count = rs.getInt("CNT");			
-			
-			
-			log.info(memberId + "님의 즐겨찾기 개수를 조회했습니다. : " + count);
-			
-			rs.close();
-			ptst.close();
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return count;
+	public int getCount(int memberId) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

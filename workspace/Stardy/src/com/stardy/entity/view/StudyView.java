@@ -17,6 +17,7 @@ public class StudyView {
 		// TODO Auto-generated constructor stub
 	}
 	
+
 	private int id;
 	private String title;
 	private String intro;

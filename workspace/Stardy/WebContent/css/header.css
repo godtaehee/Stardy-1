@@ -103,6 +103,7 @@
 }
 
 .drop-menu {
+
   /* background-image: url("../img/detail/person.png"); */
   background-position: center center;
   background-repeat: no-repeat;
@@ -120,6 +121,7 @@
 	position: absolute;
 	border-radius: 50%;
 	border: 1px solid #d0d0d0;
+
 }
 
 .drop-menu:hover .drop-list {

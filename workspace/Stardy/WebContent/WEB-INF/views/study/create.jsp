@@ -1,13 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%
 
-int memberId = (int) request.getSession().getAttribute("id");
-/* String id = request.getParameter("id"); */
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,19 +10,24 @@ int memberId = (int) request.getSession().getAttribute("id");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/reset.css">
-    <!-- <link rel="stylesheet" href="../css/layout.css"> -->
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" href="../css/basic.css">
     <link rel="stylesheet" href="../css/main-only/layout.css">
     <link rel="stylesheet" href="../css/main-only/element.css">
     <link rel="stylesheet" href="../css/header.css">
-    <!-- <link rel="stylesheet" href="../css/studyList2.css"> -->
     <link rel="stylesheet" href="../css/studyCreate.css">
     <title>Document</title>
     <style>
     	.jumbotron-img-container {
     		width: 100%;
     		height: 100%;
+    	}
+    	
+    	.category-on {
+    		background-color: rgba(248, 118, 63, 0.75) !important;
+    	}
+    	
+    	.category-off {
+    		background-color: rgba(205, 205, 205, 0.58) !important;
     	}
     </style>
 </head>
@@ -45,16 +45,16 @@ int memberId = (int) request.getSession().getAttribute("id");
                         <h1 class="d-none">스터디 개설</h1>
                         <p class="section-title" id="banner">스터디 개설</p>
                     </div>
-                   	<!-- 폼태그폼태 폼태그폼태 폼태그폼태 폼태그폼태 폼태그폼태 폼태그폼태 -->
-            	<form action="target" method="POST">
+            	<form action="target" method="post" enctype="multipart/form-data">
             		<input type="hidden" class="category" name="category">
-            		<input type="hidden" name="memberId" value="<%=memberId%>">
+            		<input type="hidden" name="memberId" value="${memberId }">
             		   <section class="bg-section">
                         <div class="jumbotron-img">
                             <div class="d-none">이미지</div>
                            	<div class="jumbotron-img-container"></div>
                             <label class="camera">
-                           	    <input type="file" style="visibility:hidden" accept="image/*" onchange="setThumbnail(event)"/>
+                           	    <input type="file" style="visibility:hidden" name="imgFile" accept="image/*" onchange="setThumbnail(event)"/>
+
                            	</label>
                         </div>
                         <div class="study-name float-content flex-column">
@@ -103,7 +103,7 @@ int memberId = (int) request.getSession().getAttribute("id");
                         <section class="create-btn">
                             <label class="d-none">개설하기</label>
                             <a href="studyList.html">
-                                <button type="submit" class="img-create" href="">개설하기</button>
+                                <button type="submit" class="img-create" href="study/target">개설하기</button>
                             </a>
                         </section>
             
@@ -124,13 +124,34 @@ int memberId = (int) request.getSession().getAttribute("id");
     
     const choose = document.querySelector('.choose');
     
+    let prev = undefined;
+
     choose.addEventListener('click', (e) => {
-    	
-    	if(e.target.tagName !== 'LI')
+
+     	if(e.target.tagName !== 'LI')
     		return;
     	category.value = e.target.innerText;
-    });
-   	
+ 
+    	if(prev) {
+    		prev.className="";
+ 
+    	}
+    	if(e.target.tagName === 'LI') {
+    		if(e.target.classList.contains('category-on')) {
+    			e.target.classList.remove('category-on');
+    			e.target.classList.add('category-off');
+    		}
+    		else if(e.target.classList.contains('category-off')) {
+    			e.target.classList.remove('category-off');
+    			e.target.classList.add('category-on');
+    		}else {
+    			e.target.classList.add('category-on');
+    		}
+    		prev = e.target;
+
+    	}
+    })
+    
    	
     function setThumbnail(event) {
         var reader = new FileReader();

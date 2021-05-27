@@ -12,6 +12,7 @@ import lombok.Data;
 public class Files {
 	
 	private String uuid;
+
 	
 	private String name;
 	private String path;

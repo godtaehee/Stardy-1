@@ -65,14 +65,14 @@ style="display:<%if(success.equals("0")){%>none<%}else{%>flex<%}%>">
             
                 <div class="search-menu">
                     <ul>
-                        <li class="btn"><a href="list?c=0&q=${param.q}&p=${param.p}" class="btn">IT</a></li>
-                        <li class="btn"><a href="list?c=1&q=${param.q}&p=${param.p}" class="btn">어학</a></li>
-                        <li class="btn"><a href="list?c=2&q=${param.q}&p=${param.p}" class="btn">자격증</a></li>
-                        <li class="btn"><a href="list?c=3&q=${param.q}&p=${param.p}" class="btn">고시/공무원</a></li>
-                        <li class="btn"><a href="list?c=4&q=${param.q}&p=${param.p}" class="btn">취미/교양</a></li>
-                        <li class="btn"><a href="list?c=5&q=${param.q}&p=${param.p}" class="btn">기타</a></li>
+                        <li class="btn"><a href="list?c=0&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">IT</a></li>
+                        <li class="btn"><a href="list?c=1&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">어학</a></li>
+                        <li class="btn"><a href="list?c=2&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">자격증</a></li>
+                        <li class="btn"><a href="list?c=3&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">고시/공무원</a></li>
+                        <li class="btn"><a href="list?c=4&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">취미/교양</a></li>
+                        <li class="btn"><a href="list?c=5&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">기타</a></li>
                  
-                        <a href="../create.jsp">
+                        <a href="/study/create">
                             <li class="btn btn--primary">스터디 개설하기</li>
                         </a>
                     </ul>
@@ -83,44 +83,51 @@ style="display:<%if(success.equals("0")){%>none<%}else{%>flex<%}%>">
 
     <!-- MAIN -->
     <main class="section section--main">
-        <a href="realStudy.html">
 
 <c:forEach var ="study" items="${list}">
   <div class="inner">
-            <div class="study_img">
-                <img src="../../img/study_img.png" alt="">
-            </div>
+  
+  
+  
+  	<a href="/study/board/detail?id=${study.id}">
+		<c:choose>
+	    	<c:when test="${null ne study.bg}">
+    			<div class="study_img" style="background:url('/upload/${study.path}/${study.bg}') center center no-repeat; background-size:cover;"></div>
+    		</c:when>
+     		<c:otherwise>
+     			<div class="study_img"></div>
+     		</c:otherwise>
+		</c:choose>   
+   </a>
+    
 
-            <div class="desc">
-                <div class="text">
-                    <div class="category">${study.name}</div>
-                    <div class="title">${study.title}</div>
-                    <div class="note">${study.intro}</div>
-                </div>
+       <div class="desc">
+           <div class="text">
+               <div class="category">${study.name}</div>
+               <div class="title">${study.title}</div>
+               <div class="note">${study.intro}</div>
+           </div>
 
 
-                <div class="text_date">
-                    <div class="detail">
-                        <ul>
-                            <li>정원</li>
-                            <li>${study.cnt}/${study.limit}</li>
-                            <li>명</li>
-                        </ul>
-                    </div>
+           <div class="text_date">
+               <div class="detail">
+                   <ul>
+                       <li>정원</li>
+                       <li>${study.cnt}/${study.limit}</li>
+                       <li>명</li>
+                   </ul>
+               </div>
 
-                    <div class="date">
-                        <p>개설일 : </p>
-                        <p>${study.regDate}</p>
+               <div class="date">
+                   <p>개설일 : </p>
+                   <p>${study.regDate}</p>
 
-                        <p>모집 종료일 : </p>
-                        <p>${study.dueDate}</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>        
-        </a>
-        <a href="realStudy.html">
+                   <p>모집 종료일 : </p>
+                   <p>${study.dueDate}</p>
+               </div>
+           </div>
+       </div>
+  </div>        
 </c:forEach>
 
 

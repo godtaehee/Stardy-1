@@ -18,7 +18,6 @@
     <div class="body__container">
     
         <%@include file="layout/header.jsp" %>
-
         <section>
             <h1>아이디 찾기</h1>
             <p>아이디를 잊으셨나요 ? </p>
@@ -39,17 +38,7 @@
             </form>
             <p>혹시 비밀번호를 찾으시나요?</p>
             <a href="#">비밀번호 찾기</a>
-
-
         </section>
-
-
-
-
     </div>
-
-
-
-
 </body>
 </html>

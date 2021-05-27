@@ -1,240 +1,342 @@
 package com.stardy.service;
 
 import com.stardy.entity.Study;
+import com.stardy.entity.view.StudyRegisterView;
 import com.stardy.entity.view.StudyView;
 import com.stardy.util.DatabaseUtil;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
+
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 public class StudyServiceImpl implements StudyService {
+	
+	public List<StudyRegisterView> getMyStudyList(int memberIdParam) {
+		
+		List<StudyRegisterView> list = new ArrayList<>();
+		
+		if(memberIdParam == 0) 
+			return list;
+		
+		String sql = "SELECT * FROM STUDY_REGISTER_VIEW WHERE MEMBER_ID=" + memberIdParam;
+		
+		try(
+				Connection con = DatabaseUtil.getConnection();
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery(sql);
+				) {
+			
+			while(rs.next()) {
+				
+				int studyId = rs.getInt("STUDY_ID");
+				int memberId = rs.getInt("MEMBER_ID");
+				int id = rs.getInt("ID");
+				String title = rs.getString("TITLE");
+				int leader = rs.getInt("LEADER");
+				int categoryId = rs.getInt("CATEGORY_ID");
+				int limit = rs.getInt("LIMIT");
+				String open = rs.getString("OPEN");
+				Date dueDate = rs.getDate("DUEDATE");
+				String intro = rs.getString("INTRO");
+				Date regDate = rs.getDate("REGDATE");
+				Date updateDate = rs.getDate("UPDATEDATE");
+				String bg = rs.getString("BG");
+				String path = rs.getString("PATH");
+				int cnt = rs.getInt("CNT");
+				String name = rs.getString("NAME");
+				
+				StudyRegisterView study = new StudyRegisterView(studyId, memberId, id, title, leader, categoryId, limit, open,
+						dueDate, intro, regDate, updateDate, bg, path, cnt, name);
+				
+				list.add(study);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
 
-   public List<Study> getList(boolean flag, String memberId) throws SQLException {
+	}
+	
+	public List<StudyRegisterView>  getNotMyStudyList(int memberIdParam) {
+		
+		List<StudyRegisterView> list = new ArrayList<>();
+		
+		if(memberIdParam == 0) 
+			return list;
+		
+		String sql = "SELECT * FROM STUDY_REGISTER_VIEW WHERE NOT MEMBER_ID IN " + memberIdParam;
+		
+		try(
+				Connection con = DatabaseUtil.getConnection();
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery(sql);
+				) {
+			
+			while(rs.next()) {
+				
+				int studyId = rs.getInt("STUDY_ID");
+				int memberId = rs.getInt("MEMBER_ID");
+				int id = rs.getInt("ID");
+				String title = rs.getString("TITLE");
+				int leader = rs.getInt("LEADER");
+				int categoryId = rs.getInt("CATEGORY_ID");
+				int limit = rs.getInt("LIMIT");
+				String open = rs.getString("OPEN");
+				Date dueDate = rs.getDate("DUEDATE");
+				String intro = rs.getString("INTRO");
+				Date regDate = rs.getDate("REGDATE");
+				Date updateDate = rs.getDate("UPDATEDATE");
+				String bg = rs.getString("BG");
+				String path = rs.getString("PATH");
+				int cnt = rs.getInt("CNT");
+				String name = rs.getString("NAME");
+				
+				StudyRegisterView study = new StudyRegisterView(studyId, memberId, id, title, leader, categoryId, limit, open,
+						dueDate, intro, regDate, updateDate, bg, path, cnt, name);
+				
+				list.add(study);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
 
-      List<Study> list = new ArrayList<>();
+	}
 
-      // 내가 가입한 스터디 목록 true , 내가 가입하지 않은 스터디 목록 false
+    
+    public int getCrnt(Study study) throws SQLException {
 
-      String sql = "";
-      if (flag) {
-         sql = "SELECT * FROM STUDY_LIST WHERE MEMBER_ID=" + memberId + " AND ROWNUM <= 10";
-
-      } else
-         sql = "SELECT * FROM STUDY_LIST WHERE NOT MEMBER_ID IN " + memberId + " AND ROWNUM <= 10";
-
-      if (!flag && memberId.equals("")) {
-         sql = "SELECT * FROM STUDY";
+		String sql = "SELECT COUNT(MEMBER_ID) CNT FROM JOINED_STUDY WHERE STUDY_ID=" + study.getId();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        con = DatabaseUtil.getConnection();
+        pstmt = con.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		
+		rs.next();
+		
+        int cnt = rs.getInt("CNT");
+        
+        pstmt.close();
+        con.close();
+        rs.close();
+    		
+    	
+    	return cnt;
+             
+    }
+    
+    public String getLeader(int id) throws SQLException {
+		
+		String sql = "SELECT NICKNAME FROM MEMBER WHERE ID=" + id;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        con = DatabaseUtil.getConnection();
+        pstmt = con.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		
+		rs.next();
+		
+        String nickName = rs.getString("NICKNAME");
+        
+        pstmt.close();
+        con.close();
+        rs.close();
+    		
+    	
+    	return nickName;
+             
+    }
+    
+    public boolean isLeader(int memberId, int studyId) throws SQLException {
+		
+  		String sql = "SELECT * FROM STUDY WHERE MEMBER_ID=" + memberId + " AND ID=" + studyId;
+          Connection con = null;
+          PreparedStatement pstmt = null;
+          con = DatabaseUtil.getConnection();
+          pstmt = con.prepareStatement(sql);
+  		ResultSet rs = pstmt.executeQuery();
+  		
+  		boolean flag = false;
+  		if(rs.next()) {
+  			flag = true;
+  		}
+  		
+          pstmt.close();
+          con.close();
+          rs.close();
+      		
+      	
+      	return flag;
+               
       }
-      System.out.println(sql);
+    
+    public boolean isMember(int memberId, int studyId) throws SQLException {
+    	
+    	String sql = "SELECT * FROM JOINED_STUDY WHERE MEMBER_ID="+memberId+" AND STUDY_ID="+studyId;
+    	System.out.println(sql);
+  		System.out.println("스터디아이디 멤버아이디 " +memberId + " " + studyId);
+        Connection con = null;
+        Statement st = null;
+        con = DatabaseUtil.getConnection();
+        st = con.createStatement();
+    		ResultSet rs = st.executeQuery(sql);
+    		
+    		boolean flag = false;
+    		if(rs.next()) {
+    			System.out.println("됬냐안됬");
+    			flag = true;
+    		}
+    		
+            st.close();
+            con.close();
+            rs.close();
+        		
+        	
+        	return flag;
+    	
+    }
 
-      Connection con = null;
-      PreparedStatement pstmt = null;
 
-      con = DatabaseUtil.getConnection();
-      pstmt = con.prepareStatement(sql);
-      ResultSet rs = pstmt.executeQuery();
+    public StudyRegisterView getStudy(int sId) throws SQLException {
+        String sql = "SELECT * FROM STUDY_REGISTER_VIEW WHERE ID=?";
 
-      while (rs.next()) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
 
-         int id = rs.getInt("ID");
-         String title = rs.getString("TITLE");
-         String intro = rs.getString("INTRO");
-         String open = rs.getString("OPEN");
-         String limit = rs.getString("LIMIT");
+        con = DatabaseUtil.getConnection();
+        pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1, sId);
+        ResultSet rs = pstmt.executeQuery();
 
-         Date regDate = rs.getDate("REGDATE");
-         Date updateDate = rs.getDate("UPDATEDATE");
-         Date dueDate = rs.getDate("DUEDATE");
+        if(rs.next()) {
+        	int studyId = rs.getInt("STUDY_ID");
+			int memberId = rs.getInt("MEMBER_ID");
+			int id = rs.getInt("ID");
+			String title = rs.getString("TITLE");
+			int leader = rs.getInt("LEADER");
+			int categoryId = rs.getInt("CATEGORY_ID");
+			int limit = rs.getInt("LIMIT");
+			String open = rs.getString("OPEN");
+			Date dueDate = rs.getDate("DUEDATE");
+			String intro = rs.getString("INTRO");
+			Date regDate = rs.getDate("REGDATE");
+			Date updateDate = rs.getDate("UPDATEDATE");
+			String bg = rs.getString("BG");
+			String path = rs.getString("PATH");
+			int cnt = rs.getInt("CNT");
+			String name = rs.getString("NAME");
+			
+			StudyRegisterView study = new StudyRegisterView(studyId, memberId, id, title, leader, categoryId, limit, open,
+					dueDate, intro, regDate, updateDate, bg, path, cnt, name);
+			
+            pstmt.close();
+            con.close();
+            rs.close();
 
-         String bg = rs.getString("BG");
-         String path = rs.getString("PATH");
+            return study;
+        }
 
-         int member_Id = rs.getInt("MEMBER_ID");
-         int categoryId = rs.getInt("CATEGORY_ID");
+        return null;
 
-         Study study = new Study();
+    }
 
-         study.setId(id);
-         study.setTitle(title);
-         study.setIntro(intro);
-         study.setOpen(open);
-         study.setLimit(limit);
-         study.setRegDate(regDate);
-         study.setUpdateDate(updateDate);
-         study.setDueDate(dueDate);
-         study.setBg(bg);
-         study.setPath(path);
-         study.setMemberId(member_Id);
-         study.setCategoryId(categoryId);
 
-         list.add(study);
-      }
+    public int getDuringTime(int id) throws SQLException {
+        //
+        String sql = "SELECT TRUNC(DUEDATE) - TRUNC(REGDATE) AS TIMES FROM STUDY WHERE ID=?";
 
-      pstmt.close();
-      con.close();
-      rs.close();
-      return list;
-   }
+        Connection con = null;
+        PreparedStatement pstmt = null;
 
-   public int getCrnt(Study study) throws SQLException {
+        con = DatabaseUtil.getConnection();
+        pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1, id);
+        ResultSet rs = pstmt.executeQuery();
 
-      String sql = "SELECT COUNT(MEMBER_ID) CNT FROM JOINED_STUDY WHERE STUDY_ID=" + study.getId();
-      Connection con = null;
-      PreparedStatement pstmt = null;
-      con = DatabaseUtil.getConnection();
-      pstmt = con.prepareStatement(sql);
-      ResultSet rs = pstmt.executeQuery();
+        int time = 0;
 
-      rs.next();
+        if(rs.next()) {
+            time = Integer.parseInt(rs.getString("TIMES"));
+        }
 
-      int cnt = rs.getInt("CNT");
+        pstmt.close();
+        con.close();
+        rs.close();
 
-      pstmt.close();
-      con.close();
-      rs.close();
+        return time;
+    }
 
-      return cnt;
+    
+    public int getStudyId(int memberId, String title) {
+    	
+ 	   String sql = "SELECT ID FROM STUDY WHERE MEMBER_ID=" + memberId +" AND TITLE='"+title+"'";
 
-   }
 
-   public String getLeader(int id) throws SQLException {
+ 	   int id = 0;
+        
 
-      String sql = "SELECT NICKNAME FROM MEMBER WHERE ID=" + id;
-      Connection con = null;
-      PreparedStatement pstmt = null;
-      con = DatabaseUtil.getConnection();
-      pstmt = con.prepareStatement(sql);
-      ResultSet rs = pstmt.executeQuery();
+		   
+	        try {
+	            Connection con = DatabaseUtil.getConnection();
+		        PreparedStatement pstmt = con.prepareStatement(sql);
+		        ResultSet rs = pstmt.executeQuery();
+		        
+		        if(rs.next()) {
+		        	id = rs.getInt("ID");
+		        }
+		        
+		        pstmt.close();
+		        con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-      rs.next();
 
-      String nickName = rs.getString("NICKNAME");
+ 	
+ 	return id;
+ }
 
-      pstmt.close();
-      con.close();
-      rs.close();
+    
+    public void insertJoinedStudy(int memberId, String title) {
+    	
+		int studyId =  getStudyId(memberId, title);
+	
+	   String sql = "INSERT INTO JOINED_STUDY(STUDY_ID, MEMBER_ID) VALUES (?, ?)";
 
-      return nickName;
 
-   }
-
-   public boolean isLeader(int memberId, int studyId) throws SQLException {
-
-      String sql = "SELECT * FROM STUDY WHERE MEMBER_ID=" + memberId + " AND ID=" + studyId;
-      Connection con = null;
-      PreparedStatement pstmt = null;
-      con = DatabaseUtil.getConnection();
-      pstmt = con.prepareStatement(sql);
-      ResultSet rs = pstmt.executeQuery();
-
-      boolean flag = false;
-      if (rs.next()) {
-         flag = true;
-      }
-      pstmt.close();
-      con.close();
-      rs.close();
-
-      return flag;
-   }
-
-   public boolean isMember(int memberId, int studyId) throws SQLException {
-
-      String sql = "SELECT * FROM JOINED_STUDY WHERE MEMBER_ID=" + memberId + " AND STUDY_ID=" + studyId;
-      System.out.println(sql);
-      System.out.println("스터디아이디 멤버아이디 " + memberId + " " + studyId);
-      Connection con = null;
-      Statement st = null;
-      con = DatabaseUtil.getConnection();
-      st = con.createStatement();
-      ResultSet rs = st.executeQuery(sql);
-
-      boolean flag = false;
-      if (rs.next()) {
-         System.out.println("됬냐안됬");
-         flag = true;
-      }
-
-      st.close();
-      con.close();
-      rs.close();
-
-      return flag;
-
-   }
-
-   public StudyView getStudy(int id) throws SQLException {
-      String sql = "SELECT * FROM STUDY_LIST WHERE ID=?";
-
-      Connection con = null;
-      PreparedStatement pstmt = null;
-
-      con = DatabaseUtil.getConnection();
-      pstmt = con.prepareStatement(sql);
-      pstmt.setInt(1, id);
-      ResultSet rs = pstmt.executeQuery();
-
-      if (rs.next()) {
-         String title = rs.getString("TITLE");
-         String intro = rs.getString("INTRO");
-         String open = rs.getString("OPEN");
-         String limit = rs.getString("LIMIT");
-         Date regDate = rs.getDate("REGDATE");
-         Date updateDate = rs.getDate("UPDATEDATE");
-         Date dueDate = rs.getDate("DUEDATE");
-         String bg = rs.getString("BG");
-         String path = rs.getString("PATH");
-         int member_Id = rs.getInt("MEMBER_ID");
-         int categoryId = rs.getInt("CATEGORY_ID");
-         int cnt = rs.getInt("CNT");
-         String name = rs.getString("NAME");
-
-         StudyView studyList = new StudyView(id, title, intro, open, limit, regDate, updateDate, dueDate, bg, path,
-               member_Id, categoryId, cnt, name);
-
-         pstmt.close();
-         con.close();
-         rs.close();
-
-         return studyList;
-      }
-
-      return null;
-
-   }
-
-   public int getDuringTime(int id) throws SQLException {
-      //
-      String sql = "SELECT TRUNC(DUEDATE) - TRUNC(REGDATE) AS TIMES FROM STUDY WHERE ID=?";
-
-      Connection con = null;
-      PreparedStatement pstmt = null;
-
-      con = DatabaseUtil.getConnection();
-      pstmt = con.prepareStatement(sql);
-      pstmt.setInt(1, id);
-      ResultSet rs = pstmt.executeQuery();
-
-      int time = 0;
-
-      if (rs.next()) {
-         time = Integer.parseInt(rs.getString("TIMES"));
-      }
-
-      pstmt.close();
-      con.close();
-      rs.close();
-
-      return time;
-   }
-
+		
+	   int flag = 0;
+	   
+        try {
+            Connection con = DatabaseUtil.getConnection();
+	        PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, studyId);
+	        pstmt.setInt(2, memberId);
+	        flag = pstmt.executeUpdate();
+	        pstmt.close();
+	        con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+    }
+	
 //페이징 처리 리스트 가져오기 
    
    @Override

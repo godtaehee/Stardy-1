@@ -9,8 +9,6 @@ public class Criteria {
 
 	private int page;
 	private int count;
-	
-
 	private int total;
 	private int startNum;
 	private int tempEndNum;
@@ -36,6 +34,7 @@ public class Criteria {
 		startNum = ((page) / 5) * 5;
 		tempEndNum = startNum + 5;
 		endNum = total / 10 + (int) Math.ceil(total % 10.0 / 10.0);
+
 		realEndNum = tempEndNum < endNum? tempEndNum : endNum;
 		
 		next = realEndNum < endNum;

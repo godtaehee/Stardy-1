@@ -1,3 +1,4 @@
+
 const subModule = {
 	
 	add: (id, callback) => {
@@ -99,5 +100,6 @@ const subModule = {
 		});
 		
 		return data;
+
 	}
 }

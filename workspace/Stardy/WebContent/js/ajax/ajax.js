@@ -43,6 +43,7 @@ function ajax(obj){
 		
 		//console.log(data);
 		
+
 		if(obj.loadend)
 			obj.loadend(data);
 	});
@@ -84,6 +85,7 @@ function ajax(obj){
 		xhr.open(method, url, obj.async);
 	else
 		xhr.open(method, url, true);
+
 	
 	if(obj.contentType)
 		xhr.setRequestHeader('Content-Type', obj.contentType);	

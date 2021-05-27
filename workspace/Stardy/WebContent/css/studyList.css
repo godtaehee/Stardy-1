@@ -22,6 +22,10 @@
   box-sizing: border-box;
   position: relative;
 }
+
+.study_img {
+	margin-right:22px;
+}
 /* 
 .btn:hover::before {
   content: "";
@@ -254,10 +258,16 @@ header .btn-group .sign-in {
   border: solid 1px rgba(112, 112, 112, 0.35);
   background-color: #ffffff;
   display: flex;
+  align-items: center;
+  padding-left:20px;
 }
 
 .study_img {
-  padding: 2% 2%;
+	width:192px; 
+	height:162px;
+	background: url('../img/default/default.jpeg') no-repeat center center;
+  	padding: 2% 2%;
+  	background-size:cover;
 }
 
 .desc {
@@ -345,6 +355,7 @@ header .btn-group .sign-in {
 .pager div{
 	text-indent: -999px;
 	overflow: hidden;
+
 }
 
 /* --------media Query (PC ver.)-----------*/

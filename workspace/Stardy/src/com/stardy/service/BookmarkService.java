@@ -12,6 +12,8 @@ public interface BookmarkService {
 	void removeAll(int id);
 	List<SubView> getSubs(int loginId);
 	
-	int getTotal(int memberId);//전체 즐겨찾기 개수
+
+	int getCount(int memberId); //전체 즐겨찾기 개수
+	
 
 }

@@ -8,6 +8,7 @@ String current = paths.substring(paths.lastIndexOf('/') + 1, paths.lastIndexOf('
 System.out.println(current);
 %>
 
+
 			<h1 class="hide">마이페이지</h1>
                 <div class="profile-box">
                     <h1 class="hide">프로필 박스</h1>

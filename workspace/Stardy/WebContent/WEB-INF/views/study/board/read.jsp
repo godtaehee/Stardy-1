@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -175,6 +176,7 @@
 </script>
 <script src="../../js/mymodal/modal.js"></script>
 <script src="../../js/mypage/subModule.js"></script>
+>>>>>>> refs/remotes/real/master
 <script src="../../js/board/read.js"></script>
 <script src="../../js/board/replyModule.js"></script>
 <script src="../../js/ajax/ajax.js"></script>

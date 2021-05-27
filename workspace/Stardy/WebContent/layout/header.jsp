@@ -33,7 +33,8 @@
 	                        </c:if>
                             <div class="drop-list hide">
                                 <div class="drop-item">
-                                    <a href="#" class="btn-logout">로그아웃</a>
+                                    <a href="//login" class="btn-logout">로그아웃</a>
+
                                 </div>
                                 <div class="drop-item">
 		                            <a class="" href="/study/list">스터디 보기</a>

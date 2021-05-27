@@ -38,6 +38,7 @@ public class FriendsModifyController extends HttpServlet{
 		
 		request.getRequestDispatcher("/WEB-INF/views/mypage/friend-modify.jsp").forward(request, response);			
 
+
 	}
 	
 	@Override
