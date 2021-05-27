@@ -22,6 +22,6 @@ public class DeleteController extends HttpServlet{
 		
 		service.deleteUser(id);
 		request.getSession().invalidate(); //세션 초기화
-		response.sendRedirect("/index.html"); //렌더링 페이지로 이동
+		response.sendRedirect("/home"); //렌더링 페이지로 이동
 	}
 }

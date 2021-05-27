@@ -168,7 +168,7 @@
             <div class="study-list">
                     <div class="study-list-header">
                         <div class="study-title">내 스터디 목록</div>
-                        <a href="study/list"><div class="arrow"></div></a>
+                        <div class="arrow"></div>
                     </div>
                     <div class="study-list-desc">스터디룸에 입장해보세요</div>
                     <div class="study-list-item">
@@ -187,7 +187,8 @@
                                                 <div class="mini-card-container" >
                                                 	<c:choose>
                                                 	    <c:when test="${null ne myStudy.bg}">
-                                                    		<div class="mini-card-img" style="background:url('/upload/${myStudy.path}/${myStudy.bg}') center center no-repeat; background-size:cover"></div>
+                                                    		<!-- <div class="mini-card-img" style="background:url('/upload/${myStudy.path}/${myStudy.bg}') center center no-repeat; background-size:cover"></div>-->
+                                                    		<img class="mini-card-img" src="/upload/${myStudy.path}/${myStudy.bg}" >
                                                     	</c:when>
 	                                                    <c:otherwise>
 	                                                    	<div class="mini-card-img"></div>
@@ -212,7 +213,7 @@
             <div class="study-list">
                 <div class="study-list-header">
                     <div class="study-title">이런 스터디는 어때요?</div>
-                    <div class="arrow"></div>
+                    <a href="study/list"><div class="arrow"></div></a>
                 </div>
                 <div class="study-list-desc">곧 모집이 마감되는 스터디에요! 개설된 스터디는 '스터디 보기' 메뉴에서 조회할 수있어요</div>
                 <div class="study-list-item">
@@ -222,7 +223,8 @@
                             <li class="mini-card">
                                 <a href="study/board/detail?id=${notInStudy.id}">
                                     <div class="mini-card-container">
-                                        <div class="mini-card-img" style="background:url('/upload/${notInStudy.path}/${notInStudy.bg}') center center no-repeat"></div>
+                                        <!-- <div class="mini-card-img" style="background:url('/upload/${notInStudy.path}/${notInStudy.bg}') center center no-repeat"></div> -->
+                                        <img class="mini-card-img" src="/upload/${notInStudy.path}/${notInStudy.bg}" >
                                         <div class="mini-card-title">${notInStudy.title}</div>
                                         <div class="mini-card-info">
                                             <div class="mini-card-population">정원 ${notInStudy.cnt}/${notInStudy.limit}명</div>

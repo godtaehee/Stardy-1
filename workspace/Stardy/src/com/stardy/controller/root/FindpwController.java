@@ -20,7 +20,7 @@ import com.stardy.entity.Member;
 import com.stardy.service.MemberServiceImpl;
 import com.stardy.util.Logger;
 
-@WebServlet("/findpw")
+@WebServlet("/findPw")
 public class FindpwController extends HttpServlet {
 
 	static MemberServiceImpl service = new MemberServiceImpl();
@@ -40,7 +40,7 @@ public class FindpwController extends HttpServlet {
 			log.info("이메일 없음");
 			request.setAttribute("msg", "이메일 정보가 맞지 않습니다.");
 			request.setAttribute("historyBack", true);
-			request.getRequestDispatcher("/WEB-INF/findPw.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/findPw.jsp").forward(request, response);
 			return;
 		}
 
@@ -85,13 +85,13 @@ public class FindpwController extends HttpServlet {
 			message.setContent("<h1>비밀번호 변경요청</h1>" +"<br>"+"안녕하세요." +"<br>"
 			+ "<p>비밀번호 변경 요청이 발생했음을 알려드립니다.</p>" + "<br>" + 
 					"<p>비밀번호를 변경하려면 아래 링크를 방문해주세요<p>"+"<br>"
-			+ "<a href='" + page +"changePw.jsp?email=" + to_email + "'>비밀번호 변경하기</a>","text/html;charset=utf-8");
+			+ "<a href='" + page +"changePw?email=" + to_email + "'>비밀번호 변경하기</a>","text/html;charset=utf-8");
 			
 			Transport.send(message);
 			System.out.println("이메일 전송 완료");
 			
 			request.getSession().setAttribute("userMail", to_email);
-			request.getRequestDispatcher("/WEB-INF/findPw2.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/findPw2.jsp").forward(request, response);
 
 			
 

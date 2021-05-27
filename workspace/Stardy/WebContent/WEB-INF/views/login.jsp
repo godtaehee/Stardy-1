@@ -44,9 +44,9 @@
                         </div>
 
                         <div class="login-help">
-                            <a href="#" class="find-password">비밀번호 찾기</a>
+                            <a href="findPw" class="find-password">비밀번호 찾기</a>
                             <img class="between-border" src="../img/between-border.png">
-                            <a href="signup.jsp" class="signup">회원가입하기</a>
+                            <a href="signup" class="signup">회원가입하기</a>
                         </div>
                     </form>
 

@@ -79,7 +79,6 @@ public class ModifyController extends HttpServlet{
 		/* failure */
 		else {
 			response.sendRedirect("/mypage/modify?msg=" + msg);			
->>>>>>> refs/remotes/real/master
 		}
 	}
 	

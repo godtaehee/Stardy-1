@@ -32,7 +32,7 @@ public class ChangepwContoller extends HttpServlet {
 		if(msg != null)
 			request.setAttribute("msg", msg);
 		
-		
+		request.getRequestDispatcher("/WEB-INF/views/changePw.jsp").forward(request, response);
 	}
 	
 	@Override
@@ -60,7 +60,7 @@ public class ChangepwContoller extends HttpServlet {
 		else {
 			result = service.changPwByEmail(newPw, email);
 			System.out.println("비밀번호 변경 완료");
-			response.sendRedirect("/login.jsp");
+			response.sendRedirect("/login");
 			
 		}
 

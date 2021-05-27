@@ -13,7 +13,7 @@ public interface BookmarkService {
 	List<SubView> getSubs(int loginId);
 	
 
-	int getCount(int memberId); //전체 즐겨찾기 개수
+	int getTotal(int memberId); //전체 즐겨찾기 개수
 	
 
 }

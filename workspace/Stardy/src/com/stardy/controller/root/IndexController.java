@@ -1,35 +1,26 @@
-package com.stardy.controller.study;
+package com.stardy.controller.root;
 
-import com.stardy.entity.view.StudyRegisterView;
-import com.stardy.entity.view.StudyView;
-import com.stardy.service.StudyService;
-import com.stardy.service.StudyServiceImpl;
-import com.stardy.util.DatabaseUtil;
-
-import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/index2")
-public class StudyIndexController extends HttpServlet {
+import com.stardy.entity.view.StudyRegisterView;
+import com.stardy.service.StudyService;
+import com.stardy.service.StudyServiceImpl;
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@WebServlet("/index")
+public class IndexController extends HttpServlet{
 
-        int memberId = 0;
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+		
+		int memberId = 0;
 
         if(request.getSession().getAttribute("id") != null)
             memberId = (int) request.getSession().getAttribute("id");
@@ -60,7 +51,7 @@ public class StudyIndexController extends HttpServlet {
         request.setAttribute("notInStudy", notInStudy);
         request.setAttribute("haveStudy", haveStudy);
 
-        request.getRequestDispatcher("/WEB-INF/views/index2.jsp").forward(request,response);
-
-    }
+        request.getRequestDispatcher("/WEB-INF/views/index2.jsp").forward(request, resp);
+		
+	}
 }

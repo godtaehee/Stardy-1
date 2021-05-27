@@ -17,7 +17,7 @@
 <body>
     <div class="body__container">
     
-        <%@include file="layout/header.jsp" %>
+        <%@include file="/layout/header.jsp" %>
         <section>
             <h1>아이디 찾기</h1>
             <p>아이디를 잊으셨나요 ? </p>

@@ -30,8 +30,8 @@
                 <fieldset>
                     <legend class="d-none">비밀번호 변경</legend>
                     <ul>
-                        <li><input class="input--text" type="text" placeholder="새 비밀번호 (6글자 이상)" name="newPw"> </li>
-                        <li><input class="input--text" type="text" placeholder="새 비밀번호 확인" name="checkPw"></li> 
+                        <li><input class="input--text" type="password" placeholder="새 비밀번호 (6글자 이상)" name="newPw"> </li>
+                        <li><input class="input--text" type="password" placeholder="새 비밀번호 확인" name="checkPw"></li> 
                         <li><input class="btn" id="btnChange" type="submit" value="변경"></li>
                     </ul>
                 </fieldset>

@@ -106,89 +106,7 @@
 }
 
 /* -----HEADER----------------------------------------- */
-header {
-  margin: 0 auto;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.75);
-  background-color: #ffffff;
-  display: flex;
-  max-width: 1180px;
-}
 
-header .inner {
-  height: 65px;
-}
-
-header .menu-group {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-header .logo {
-  margin-right: 10px;
-}
-
-header .logo a {
-  width: 144px;
-  height: 45px;
-  display: block;
-  text-indent: -9999px;
-}
-
-header .main-menu {
-  display: flex;
-}
-
-header .main-menu li {
-  margin-right: 10px;
-}
-header .sign-group {
-  display: flex;
-  height: 100%;
-  align-items: center;
-}
-
-header .btn-group {
-  display: flex;
-}
-
-header .btn-group .sign-in {
-  margin-right: 5px;
-}
-
-.my-page {
-  background: #3ca0bf;
-}
-.my-page a {
-  color: white;
-}
-
-#search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  --margin-right: 17px;
-}
-#search {
-  width: 203px;
-  font-size: 14px;
-}
-
-#search + [type="submit"] {
-  display: none;
-}
-
-.user-menu {
-  width: 600px;
-  margin-left: auto;
-}
-
-.drop-menu {
-  z-index: 999;
-}
-.menu {
-  padding: 0;
-}
 /*-visual--------------------------------*/
 .section--visual .inner {
   height: 64px;
@@ -243,7 +161,10 @@ header .btn-group .sign-in {
 }
 
 /*-MAIN--------------------------------*/
-
+.orange{
+	
+	color: #f4a453 !important;
+}
 .section--main {
   display: flex;
   flex-direction: column;
@@ -265,7 +186,6 @@ header .btn-group .sign-in {
 .study_img {
 	width:192px; 
 	height:162px;
-	background: url('../img/default/default.jpeg') no-repeat center center;
   	padding: 2% 2%;
   	background-size:cover;
 }

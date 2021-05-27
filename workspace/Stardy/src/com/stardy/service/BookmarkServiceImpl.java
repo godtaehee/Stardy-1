@@ -166,9 +166,12 @@ public class BookmarkServiceImpl implements BookmarkService{
 			while(rs.next()) {
 				int id = rs.getInt("ID");
 				String title = rs.getString("TITLE");
-				String name = rs.getString("name");
+				String name_ = rs.getString("name");
+				
 				Date regDate = rs.getDate("REGDATE");
 				Date updateDate = rs.getDate("UPDATEDATE");
+				
+				String name = name_ == null? "탈퇴한 사용자" : name_;
 				
 				SubView subView = SubView.builder().id(id).regDate(regDate).name(name).updateDate(updateDate).title(title).build();
 				
@@ -191,9 +194,34 @@ public class BookmarkServiceImpl implements BookmarkService{
 
 
 	@Override
-	public int getCount(int memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getTotal(int memberId) {
+		
+		String sql = "SELECT COUNT(BOARD_ID) CNT FROM SUB WHERE MEMBER_ID = ?";
+		int count = -1;
+		
+		try {
+			Connection con = DatabaseUtil.getConnection();
+			PreparedStatement ptst = con.prepareStatement(sql);
+			
+			ptst.setInt(1, memberId);
+			
+			ResultSet rs = ptst.executeQuery();
+			
+			while(rs.next()) 
+				count = rs.getInt("CNT");			
+			
+			
+			log.info(memberId + "님의 즐겨찾기 개수를 조회했습니다. : " + count);
+			
+			rs.close();
+			ptst.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return count;
 	}
 	
 }

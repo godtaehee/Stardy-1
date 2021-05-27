@@ -38,7 +38,7 @@
 
             <form action="/study/join" method="post">
                 <input type="hidden" name="studyId" value="${study.id}">
-                <input type="hidden" name="memberId" value="${study.memberId}">
+                <input type="hidden" name="memberId" value="${id}">
                 <input type="submit" style="width: 100%; height: 2rem; background-color: #2b98ba; color: white" value="가입하기">
             </form>
 
@@ -60,7 +60,7 @@
 
 		<c:choose>
 	    	<c:when test="${null ne study.bg}">
-    			<section class="jumbotron" style="background: url('${path}') no-repeat center center; background-size:80% 80%">
+    			<section class="jumbotron" style="background: url('${detailPath}') no-repeat center center; background-size:80% 80%">
     		</c:when>
      		<c:otherwise>
      			<section class="jumbotron">
@@ -140,10 +140,11 @@
             <ul class="card-list">
                 <c:forEach var="board" items="${board}">
                     <li class="card">
+                    
                         <div class="up-and-down">
                             <div class="up"><input type="button" style="border:0; background-color:transparent"></div>
                             <div class="recommend-cnt">${board.likes}</div>
-                            <div class="down"><input type="button" style="border:0; background-color:transparent"></div>
+                            
                         </div>
                         <div class="card-content">
                             <div class="profile">
@@ -151,12 +152,12 @@
                                 <div class="profile-name">${board.name}</div>
                                 <div class="date">1h 20m ago</div>
                             </div>
-                            <div class="title">${board.title}</div>
+                            <div class="title"><a href="read?id=${board.id}">${board.title}</a></div>
                             <div class="content">${board.content}</div>
                             <div class="etc">
                                 <div class="comment">
                                     <div class="comment-img"></div>
-                                    <div class="comment-cnt">${board.replyCnt} comments</div>
+                                    <div class="comment-cnt">${board.replyCnt}</div>
                                 </div>
                                 <div class="save">
                                     <div class="save-img"></div>
@@ -164,6 +165,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </li>
                 </c:forEach>
             </ul>
@@ -215,14 +217,14 @@
                                 <div class="profile">
                                     <div class="profile-picture"></div>
                                     <div class="profile-name">왕밤빵</div>
-                                    <div class="date">1h 20m ago</div>
+                                    <div class="date"></div>
                                 </div>
                                 <div class="title">CSS 적용이 왜 안될까요?</div>
                                 <div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto culpa error eum, exercitationem, magni molestiae nam natus ratione repellendus sapiente sint temporibus unde! Culpa distinctio exercitationem facilis ipsa maiores odio, possimus quam quis recusandae repudiandae saepe sapiente similique sunt suscipit ut. Dolores excepturi incidunt porro quaerat quidem? Alias cumque cupiditate dolores iusto magnam magni recusandae, sit totam ullam. A doloremque eos labore libero maiores molestias nihil nulla quas rerum sed!</div>
                                 <div class="etc">
                                     <div class="comment">
                                         <div class="comment-img"></div>
-                                        <div class="comment-cnt">2 comments</div>
+                                        <div class="comment-cnt">2</div>
                                     </div>
                                     <div class="save">
                                         <div class="save-img"></div>

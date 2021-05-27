@@ -163,6 +163,7 @@ body {
 .exam-info {
     margin-top: 30px;
     margin-bottom: 50px;
+    height: 150px;	
 }
 
 .exam-info-header {
@@ -311,6 +312,7 @@ body {
 
 .mini-card {
     margin: 0 7px;
+        width: 150px;
 }
 
 .mini-card-img {
@@ -365,7 +367,7 @@ body {
     }
 
     .jumbotron {
-        height: 230px;
+        height: 250px;
         background-size: 210px 200px;
         background-position: right center;
     }
@@ -390,7 +392,7 @@ body {
 
     .study-list-container {
         width: 90%;
-        justify-content: space-between;
+        justify-content: flex-start;
     }
 
 

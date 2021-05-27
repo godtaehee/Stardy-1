@@ -191,7 +191,7 @@ public class MemberServiceImpl implements MemberService{
    /* 회원탈퇴 */
    public void deleteUser(int id) {
 		
-	   String sql = "UPDATE MEMBER SET NICKNAME = '탈퇴한 사용자', EMAIL = '', PASSWORD = NULL, ENABLE = 0, PROFILE = NULL, PATH = NULL WHERE ID = ?";
+	   String sql = "UPDATE MEMBER SET NICKNAME = '', EMAIL = '', PASSWORD = '', ENABLE = 0, PROFILE = NULL, PATH = NULL WHERE ID = ?";
 
 	      try {
 	         Connection con = DatabaseUtil.getConnection();

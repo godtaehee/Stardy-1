@@ -57,11 +57,16 @@ public class DetailController extends HttpServlet {
         
         ServletContext app = request.getServletContext();
         String path = "/upload";
+        
+        
+        
         path += File.separator;
         path += study.getPath();
         path += File.separator;
         path += study.getBg();
  
+        path = path.replace("\\", "/");
+        
         BoardService boardService = new BoardServiceImpl();
 
         List<BoardListContent> board = boardService.getList(id);
@@ -72,7 +77,7 @@ public class DetailController extends HttpServlet {
         request.setAttribute("isRegistered", isRegistered);
         request.setAttribute("board", board);
         request.setAttribute("duringTime", duringTime);
-        request.setAttribute("path", path);
+        request.setAttribute("detailPath", path);
         
         request.getRequestDispatcher("/WEB-INF/views/study/board/detail.jsp").forward(request,response);
 

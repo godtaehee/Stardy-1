@@ -55,19 +55,14 @@ public class LoginController extends HttpServlet{
 		
 		if(result != null) {
 			log.info("로그인 성공");
-			
+			log.info("url: " + url);
 			request.getSession().setAttribute("nickname", result.getNickname());
 			request.getSession().setAttribute("id", result.getId());
 			request.getSession().setAttribute("profile", result.getProfile());
 			request.getSession().setAttribute("path", result.getPath());
 			
-			if(url != null) {
-				response.sendRedirect(url);
-			}
-			else {
-				request.setAttribute("msg", "success");
-				response.sendRedirect("/index2");
-			}
+			request.setAttribute("msg", "success");
+			response.sendRedirect("/index");
 		}
 		else {
 			request.setAttribute("msg", "fail");

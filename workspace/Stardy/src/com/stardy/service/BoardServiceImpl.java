@@ -56,7 +56,7 @@ public class BoardServiceImpl implements BoardService{
 
 		List<BoardListContent> list = new ArrayList<BoardListContent>();
 
-		String sql = "SELECT * FROM BOARD_VIEW_CONTENT WHERE STUDY_ID = ?";
+		String sql = "SELECT * FROM BOARD_VIEW_CONTENT WHERE STUDY_ID = ? ORDER BY ID DESC";
 
 		try {
 
@@ -76,11 +76,13 @@ public class BoardServiceImpl implements BoardService{
 				int studyId = rs.getInt("STUDY_ID");
 				Date updateDate = rs.getDate("UPDATEDATE");
 				int likes = rs.getInt("LIKES");
-				String name = rs.getString("NAME");
+				String name_ = rs.getString("NAME");
 				int replyCnt = rs.getInt("REPLYCNT");
 
+				String name = name_ == null? "탈퇴한 사용자" : name_;
 
 				BoardListContent board = new BoardListContent(id, title, content, regDate, memberId, studyId, updateDate, likes, name, replyCnt);
+				log.info(board.toString());
 				list.add(board);
 			}
 

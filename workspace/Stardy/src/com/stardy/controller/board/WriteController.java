@@ -48,19 +48,22 @@ public class WriteController extends HttpServlet {
         pstmt.setInt(3, id);
         pstmt.setInt(4, sid);
 
-
         int flag = pstmt.executeUpdate();
+        
+        pstmt.close();
+        con.close();
+        
+        
 
         System.out.println(flag);
         if(flag == 1)
 
-            resp.sendRedirect("/WEB-INF/views/study/board/detail?id=" + sid);
+            resp.sendRedirect("/study/board/detail?id=" + sid);
 
 
 
 
-        pstmt.close();
-        con.close();
+        
 
 
     }

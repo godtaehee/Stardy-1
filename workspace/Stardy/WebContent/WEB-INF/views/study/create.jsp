@@ -45,7 +45,7 @@
                         <h1 class="d-none">스터디 개설</h1>
                         <p class="section-title" id="banner">스터디 개설</p>
                     </div>
-            	<form action="target" method="post" enctype="multipart/form-data">
+            	<form action="create" method="post" enctype="multipart/form-data">
             		<input type="hidden" class="category" name="category">
             		<input type="hidden" name="memberId" value="${memberId }">
             		   <section class="bg-section">

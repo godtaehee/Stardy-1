@@ -1,9 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.stardy.controller.study.StudyController" %>
-<%@ page import="com.stardy.entity.view.StudyView" %>
-<%@ page import="com.stardy.service.StudyServiceImpl" %>
-<%@ page import="com.stardy.service.StudyService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
@@ -65,12 +60,12 @@ style="display:<%if(success.equals("0")){%>none<%}else{%>flex<%}%>">
             
                 <div class="search-menu">
                     <ul>
-                        <li class="btn"><a href="list?c=0&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">IT</a></li>
-                        <li class="btn"><a href="list?c=1&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">어학</a></li>
-                        <li class="btn"><a href="list?c=2&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">자격증</a></li>
-                        <li class="btn"><a href="list?c=3&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">고시/공무원</a></li>
-                        <li class="btn"><a href="list?c=4&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">취미/교양</a></li>
-                        <li class="btn"><a href="list?c=5&q=${param.q}&p=${param.p}" class="btn" style="border:0; border-radius:0; background:transparent">기타</a></li>
+                        <li class="btn"><a href="list?c=0" class="btn" style="border:0; border-radius:0; background:transparent">IT</a></li>
+                        <li class="btn"><a href="list?c=1" class="btn" style="border:0; border-radius:0; background:transparent">어학</a></li>
+                        <li class="btn"><a href="list?c=2" class="btn" style="border:0; border-radius:0; background:transparent">자격증</a></li>
+                        <li class="btn"><a href="list?c=3" class="btn" style="border:0; border-radius:0; background:transparent">고시/공무원</a></li>
+                        <li class="btn"><a href="list?c=4" class="btn" style="border:0; border-radius:0; background:transparent">취미/교양</a></li>
+                        <li class="btn"><a href="list?c=5" class="btn" style="border:0; border-radius:0; background:transparent">기타</a></li>
                  
                         <a href="/study/create">
                             <li class="btn btn--primary">스터디 개설하기</li>
@@ -92,10 +87,11 @@ style="display:<%if(success.equals("0")){%>none<%}else{%>flex<%}%>">
   	<a href="/study/board/detail?id=${study.id}">
 		<c:choose>
 	    	<c:when test="${null ne study.bg}">
-    			<div class="study_img" style="background:url('/upload/${study.path}/${study.bg}') center center no-repeat; background-size:cover;"></div>
+    			<!-- <div class="study_img" style="background:url('/upload/${study.path}/${study.bg}') center center no-repeat; background-size:cover;"></div> -->
+    			<img class="study_img" src="/upload/${study.path}/${study.bg}" alt="스터디 이미지"/>
     		</c:when>
      		<c:otherwise>
-     			<div class="study_img"></div>
+     			<img class="study_img" src="../img/default/default.jpeg"/>
      		</c:otherwise>
 		</c:choose>   
    </a>
@@ -104,7 +100,7 @@ style="display:<%if(success.equals("0")){%>none<%}else{%>flex<%}%>">
        <div class="desc">
            <div class="text">
                <div class="category">${study.name}</div>
-               <div class="title">${study.title}</div>
+               <div class="title"><a href="/study/board/detail?id=${study.id}">${study.title}</a></div>
                <div class="note">${study.intro}</div>
            </div>
 

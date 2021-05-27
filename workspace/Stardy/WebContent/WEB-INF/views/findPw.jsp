@@ -37,7 +37,7 @@
 				<p>이메일로 재설정 링크를 보내드립니다.</p>
 			</span>
 
-			<form class="find_form" action="/findpw" method="get">
+			<form class="find_form" action="/findPw" method="get">
 				<fieldset>
 					<legend class="d-none">비밀번호 찾기</legend>
 					<ul>

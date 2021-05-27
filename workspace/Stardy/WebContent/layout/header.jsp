@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
         <header class="header">
             <h1 class="hide">header</h1>
             <!-- <a href=""></a> -->
@@ -7,7 +8,7 @@
             <div class="menu">
                 <div class="logo flex">
                 
-                    <a href="/index2"><div class="icon"></div></a>
+                    <a href="/index"><div class="icon"></div></a>
                 </div>
     
                 <div class="user-menu">
