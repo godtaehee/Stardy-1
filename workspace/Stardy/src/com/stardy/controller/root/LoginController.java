@@ -49,6 +49,7 @@ public class LoginController extends HttpServlet{
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String url = request.getParameter("url");
 		
 		Member result = service.login(email, password);
 		
@@ -60,8 +61,13 @@ public class LoginController extends HttpServlet{
 			request.getSession().setAttribute("profile", result.getProfile());
 			request.getSession().setAttribute("path", result.getPath());
 			
-			request.setAttribute("msg", "success");
-			response.sendRedirect("/index2");
+			if(url != null) {
+				response.sendRedirect(url);
+			}
+			else {
+				request.setAttribute("msg", "success");
+				response.sendRedirect("/index2");
+			}
 		}
 		else {
 			request.setAttribute("msg", "fail");

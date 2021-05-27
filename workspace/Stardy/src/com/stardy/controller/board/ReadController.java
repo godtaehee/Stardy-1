@@ -43,6 +43,7 @@ public class ReadController extends HttpServlet{
 		boolean isSub = bookmarkService.isSub(loginId, id);
 		boolean isLike = likeService.isLike(new Like(loginId, id));
 		
+		request.setAttribute("files", boardService.getFiles(id));
 		request.setAttribute("boardView", boardView);
 		request.setAttribute("next", next);
 		request.setAttribute("prev", prev);

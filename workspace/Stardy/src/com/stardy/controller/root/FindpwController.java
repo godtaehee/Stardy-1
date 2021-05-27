@@ -40,7 +40,7 @@ public class FindpwController extends HttpServlet {
 			log.info("이메일 없음");
 			request.setAttribute("msg", "이메일 정보가 맞지 않습니다.");
 			request.setAttribute("historyBack", true);
-			request.getRequestDispatcher("/findPw.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/findPw.jsp").forward(request, response);
 			return;
 		}
 
@@ -91,7 +91,7 @@ public class FindpwController extends HttpServlet {
 			System.out.println("이메일 전송 완료");
 			
 			request.getSession().setAttribute("userMail", to_email);
-			request.getRequestDispatcher("/findPw2.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/findPw2.jsp").forward(request, response);
 
 			
 

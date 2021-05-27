@@ -63,6 +63,19 @@
                     <div class="input-box">
                         <textarea name="content" rows="20" class="input-item input--text" readonly>${boardView.content }</textarea>
                     </div>
+                    
+                    
+                    <div class="input-box">
+                    	<ul>
+                        <c:forEach var="file" items="${files}">
+                        	<li class="">
+                        		<a download="${file.name }" href="/upload/${file.path}/${file.uuid}_${file.name}">${file.name}</a>
+                        	</li>
+                        </c:forEach>
+                        </ul>
+                    </div>
+					<hr>
+
 
                     <nav class="util-box">
                         

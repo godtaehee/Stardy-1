@@ -24,6 +24,7 @@ public interface BoardService {
 	
 	/* 게시글 조회 */
 	 BoardView read(int id);
+	 List<Files> getFiles(int boardId);
 	
 	/* 게시글 수정 */
 	 int modify(BoardView board);

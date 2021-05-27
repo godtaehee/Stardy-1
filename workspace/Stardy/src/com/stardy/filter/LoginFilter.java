@@ -31,8 +31,9 @@ public class LoginFilter implements Filter{
 			chain.doFilter(request, response);
 		}
 		else {
-			
-			resp.sendRedirect("/login.jsp");
+			String referer = req.getHeader("Referer");
+			String url = referer == null? "" : referer.substring(referer.indexOf("8080/") + 4);
+			resp.sendRedirect("/login.jsp?url=" + url);
 		}
 	}
 

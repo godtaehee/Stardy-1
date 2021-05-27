@@ -257,6 +257,39 @@ public class BoardServiceImpl implements BoardService{
 		return boardView;
 	}
 	
+	
+	@Override
+	public List<Files> getFiles(int boardId) {
+
+		List<Files> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM FILES WHERE BOARD_ID = ?";
+		
+		try (Connection con = DatabaseUtil.getConnection();
+			PreparedStatement ptst = con.prepareStatement(sql);)
+		{
+			
+			ptst.setInt(1, boardId);
+			ResultSet rs = ptst.executeQuery();
+			
+			while(rs.next()) {
+				String uuid = rs.getString("ID");
+				String fileName = rs.getString("NAME");
+				String path = rs.getString("PATH");
+				
+				list.add(Files.builder().uuid(uuid).name(fileName).path(path).boardId(boardId).build());
+			}
+			
+			list.stream().forEach(file -> log.info(file.toString()));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
 	/* 게시글 수정 */
 	public int modify(BoardView board) {
 		

@@ -30,6 +30,7 @@ public class ModifyController extends HttpServlet{
 		BoardView boardView = boardService.read(bid);
 				
 		request.setAttribute("boardView", boardView);
+		request.setAttribute("files", boardService.getFiles(bid));
 		
 		request.getRequestDispatcher("/WEB-INF/views/study/board/modify.jsp").forward(request, response);
 	}
