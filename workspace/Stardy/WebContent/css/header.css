@@ -103,13 +103,25 @@
 }
 
 .drop-menu {
-  background-image: url("../img/detail/person.png");
+
+  /* background-image: url("../img/detail/person.png"); */
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
   width: 72px;
   height: 72px;
   margin-left: auto;
+}
+
+.mini-profile-icon{
+	width: 28px;
+	height: 28px;
+	top: 22px;
+	left: 22px;
+	position: absolute;
+	border-radius: 50%;
+	border: 1px solid #d0d0d0;
+
 }
 
 .drop-menu:hover .drop-list {

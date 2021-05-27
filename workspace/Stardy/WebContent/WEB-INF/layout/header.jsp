@@ -25,16 +25,9 @@
                         </div>
  
                         <div class="drop-menu flex">
-                        	<c:if test="${profile == null || profile == ''}">
-	                        <img class="mini-profile-icon" src="../img/detail/profile-icon.svg" alt="profile icon">
-	                        </c:if>
-	                        <c:if test="${profile != null && profile != ''}">
-	                        <img class="mini-profile-icon" src="/upload/${path}/${profile}" alt="profile icon">
-	                        </c:if>
                             <div class="drop-list hide">
                                 <div class="drop-item">
-                                    <a href="//login" class="btn-logout">로그아웃</a>
-
+                                    <a href="#" class="btn-logout">로그아웃</a>
                                 </div>
                                 <div class="drop-item">
 		                            <a class="" href="/study/list">스터디 보기</a>

@@ -1,11 +1,7 @@
-<%@page import="com.stardy.entity.view.BoardView"%>
-<%@page import="com.stardy.entity.Like"%>
-<%@page import="com.stardy.service.LikeServiceImpl"%>
-<%@page import="com.stardy.service.BookmarkServiceImpl"%>
-<%@page import="com.stardy.service.BoardServiceImpl"%>
-<%@page import="com.stardy.entity.Board"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +13,7 @@
     
     <link rel="stylesheet" href="../../css/basic.css">
     <link rel="stylesheet" href="../../css/header.css">
-    <link rel="stylesheet" href="../../css/main-only/layout.css">
+    <link rel="stylesheet" href="../../../css/main-only/layout.css">
     <link rel="stylesheet" href="../../css/main-only/element.css">
     <link rel="stylesheet" href="../../css/board/read.css">
     <link rel="stylesheet" href="../../css/reset.css">
@@ -30,31 +26,6 @@
 </head>
 
 <body>
-
-<%
-
-	BoardServiceImpl boardService = new BoardServiceImpl();
-
-	BookmarkServiceImpl bookmarkService = new BookmarkServiceImpl();
-	LikeServiceImpl likeService = new LikeServiceImpl();
-
-	String id_ = request.getParameter("id");
-	int id = 0;
-	
-	if(id_ != null && !id_.equals(""));
-		id = Integer.parseInt(id_);
-		
-	BoardView boardView = boardService.read(id);
-	int studyId = boardView.getStudyId();
-	
-	int next = boardService.getNext(id, studyId);
-	int prev = boardService.getPrev(id, studyId);
-	Integer loginId = (Integer) request.getSession().getAttribute("id");
-	
-	boolean isSub = bookmarkService.isSub(loginId, id);
-	boolean isLike = likeService.isLike(new Like(loginId, id));
-%>
-
     <div class="container-only body__container">
         <%@include file="/layout/header.jsp" %>
         
@@ -65,52 +36,52 @@
                 <section class="board-box">
                     <h1 class="hide">게시글 상세</h1>
                     
-                    <input type="hidden" value="id" name="id" value="<%=boardView.getId() %>">
+                    <input type="hidden" value="id" name="id" value="${boardView.id }">
                     
                     <div class="pager-box">
                         
                             <h1 class="hide">게시글 페이저</h1>
-                            <%if(next > 0) {%>
-                            <a href="read.jsp?id=<%=next %>" class="btn button"><i class="fas fa-2x fa-angle-up"></i><!-- &nbsp다음 글 --></a>
-                            <%} %>
+                            <c:if test="${next > 0 }">
+                            <a href="read?id=${next }" class="btn button"><i class="fas fa-2x fa-angle-up"></i><!-- &nbsp다음 글 --></a>
+                            </c:if>
                             
-                            <%if(prev > 0) {%>
-                            <a href="read.jsp?id=<%=prev %>" class="btn button"><i class="fas fa-2x fa-angle-down"></i><!-- &nbsp이전 글 --></a>
-                            <%} %>
+                            <c:if test="${prev > 0 }">
+                            <a href="read?id=${prev }" class="btn button"><i class="fas fa-2x fa-angle-down"></i><!-- &nbsp이전 글 --></a>
+                            </c:if>
                             
                         </div>
                     
                     <div class="input-box">
-                        <input type="text" class="input-item title" value="<%=boardView.getTitle() %>" readonly>
+                        <input type="text" class="input-item title" value="${boardView.title }" readonly>
                     </div>
 
                     <div class="input-box span-box">
-                        <span class="span writer"><%=boardView.getName() %></span>
+                        <span class="span writer">${boardView.name }</span>
                         <span class="span">/</span>
-                        <span class="span regdate"><%=boardView.getRegDate() %></span>
+                        <span class="span regdate">${boardView.regDate }</span>
                     </div>
                     <hr>
                     <div class="input-box">
-                        <textarea name="content" rows="20" class="input-item input--text" readonly><%=boardView.getContent() %></textarea>
+                        <textarea name="content" rows="20" class="input-item input--text" readonly>${boardView.content }</textarea>
                     </div>
 
                     <nav class="util-box">
                         
                         <div class="info-box">
-	                        <button class="button-like button-img <%=isLike? "like":"unlike"%>"></button>
-		                    <span class="likes"><%=boardView.getLikes() %></span>
-		                    <button class="bookmark button-img <%=isSub? "icon-bookmark":"icon-bookmark-off" %>"></button>
+	                        <button class="button-like button-img ${isLike? 'like':'unlike'}"></button>
+		                    <span class="likes">${boardView.likes }</span>
+		                    <button class="bookmark button-img ${isSub? 'icon-bookmark':'icon-bookmark-off'}"></button>
 	                    </div>
                         <div class="button-box">
                             <h1 class="hide">버튼 박스</h1>
-                            <a href="/study/detail.jsp?id=<%=boardView.getStudyId() %>" class="btn button button-back">목록</a>
+                            <a href="/study/board/detail?id=${boardView.studyId }" class="btn button button-back">목록</a>
                             
-                            <%if(loginId.equals(boardView.getMemberId())) {%>
-                            <a href="modify.jsp?id=<%=boardView.getId() %>" class="btn button button-modify">수정하기</a>
-                            <%} %>
+                            <c:if test="${id eq boardView.memberId }">
+                            <a href="modify?id=${boardView.id }" class="btn button button-modify">수정하기</a>
+                            </c:if>
                             
                             <!-- 사용자 인증을 위한 Email 데이터, Session의 Email과 대조 해서 본인 확인 -->
-                            <input type="hidden" name="email" value="<%=boardView.getMemberId() %>">
+                            <input type="hidden" name="email" value="${boardView.memberId }">
                         </div>
                     </nav>
                 </section>
@@ -132,7 +103,7 @@
                     <section class="reply-list-box">
                         <h1 class="hide">댓글 목록</h1>
                         <label class="reply-box-title">Comments</label>
-                        <span class="reply-count"><%=boardView.getReplyCnt() %></span>
+                        <span class="reply-count">${boardView.replyCnt }</span>
                         <div class="reply-list">
                             <!-- <div class="replies">
                                 <div>
@@ -185,12 +156,14 @@
 
 <!-- Javascript -->
 <script>
-	window.loginId = <%=loginId %>;
-	window.id = <%=boardView.getId() %>;
-	window.isSub = <%=isSub%>;
-	window.isLike = <%=isLike%>;
+	window.loginId = '${id}';
+	window.id = '${boardView.id}';
+	window.isSub = ${isSub};
+	window.isLike = ${isLike};
 </script>
 <script src="../../js/mymodal/modal.js"></script>
+<script src="../../js/mypage/subModule.js"></script>
+>>>>>>> refs/remotes/real/master
 <script src="../../js/board/read.js"></script>
 <script src="../../js/board/replyModule.js"></script>
 <script src="../../js/ajax/ajax.js"></script>

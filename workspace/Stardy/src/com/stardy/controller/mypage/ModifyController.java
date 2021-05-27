@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.stardy.entity.Member;
+import com.stardy.service.MemberService;
 import com.stardy.service.MemberServiceImpl;
 import com.stardy.util.Logger;
 
@@ -29,7 +30,15 @@ public class ModifyController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//request.getRequestDispatcher("/WEB-INF/views/mypage/modify.jsp").forward(req, resp);
+		Integer loginId = (Integer) request.getSession().getAttribute("id");
+
+		MemberService service = new MemberServiceImpl();
+
+		Member member = service.get(loginId);
+		
+		request.setAttribute("member", member);
+		
+		request.getRequestDispatcher("/WEB-INF/views/mypage/modify.jsp").forward(request, response);
 	}
 	
 	@Override
@@ -65,11 +74,12 @@ public class ModifyController extends HttpServlet{
 		/* !failure */
 		if(!failure) {
 			memberService.modify(member);
-			response.sendRedirect("/mypage/modify.jsp");
+			response.sendRedirect("/mypage/modify");
 		}
 		/* failure */
 		else {
-			response.sendRedirect("/mypage/modify.jsp?msg=" + msg);			
+			response.sendRedirect("/mypage/modify?msg=" + msg);			
+>>>>>>> refs/remotes/real/master
 		}
 	}
 	

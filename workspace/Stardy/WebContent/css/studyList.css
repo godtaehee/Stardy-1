@@ -304,17 +304,17 @@ header .btn-group .sign-in {
   margin-right: 20px;
 }
 
-.pager > div:nth-child(2) {
+.pager .prev {
   height: 35px;
-  width: 75px;
-  background: url("../img/btnPrev.png") no-repeat center;
+  width: 35px;
+  background: url("../../img/btnPrev.svg") no-repeat center;
   margin-right: 4px;
 }
 
-.pager > div:nth-child(4) {
+.pager .next {
   height: 35px;
-  width: 75px;
-  background: url("../img/btnNext.png") no-repeat center;
+  width: 35px;
+  background: url("../../img/btnNext.svg") no-repeat center;
 }
 
 .pager > ul {
@@ -323,9 +323,7 @@ header .btn-group .sign-in {
 }
 
 .pager > ul li {
-  border: solid 1px #494949;
   display: flex;
-  width: 37px;
   justify-content: center;
   align-items: center;
   margin-right: 4px;
@@ -335,14 +333,19 @@ header .btn-group .sign-in {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-top: 64px;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
 }
 
 .pager > ul > li a {
   font-weight: bold;
-  color: #2ba5ca;
-  padding: 50%;
+  color: #000;
+
+}
+
+.pager div{
+	text-indent: -999px;
+	overflow: hidden;
+
 }
 
 /* --------media Query (PC ver.)-----------*/

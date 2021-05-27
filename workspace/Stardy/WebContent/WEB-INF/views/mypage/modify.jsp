@@ -1,7 +1,7 @@
-<%@page import="com.stardy.entity.Member"%>
-<%@page import="com.stardy.service.MemberServiceImpl"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,14 +25,7 @@
 </head>
 
 <body>
-<%
-	String msg = request.getParameter("msg");
 
-Integer loginId = (Integer) request.getSession().getAttribute("id");
-MemberServiceImpl service = new MemberServiceImpl();
-
-Member member = service.get(loginId);
-%>
     <div class="container-only body__container">
         <%@include file="/layout/header.jsp" %>
 
@@ -46,17 +39,17 @@ Member member = service.get(loginId);
                         <div class="modify-form-box">
                             <form action="/mypage/modify" class="modify-form" method="post">
                                 <div class="input-control">내 닉네임</div>
-                                <input class="input-item input-nick input--text" type="text" value="<%=member.getNickname() %>" name="nickname">
+                                <input class="input-item input-nick input--text" type="text" value="${member.nickname }" name="nickname">
 
                                 <div class="input-control">내 이메일</div>
-                                <input class="input-item input--text" type="email" value="<%=member.getEmail() %>" name="email" readonly>
+                                <input class="input-item input--text" type="email" value="${member.email }" name="email" readonly>
 
                                 <div class="input-control">비밀번호 변경</div>
                                 <input class="input-item input-password input--text" type="password" placeholder="******" name="password">
 
                                 <div class="input-control">비밀번호 확인</div>
                                 <input class="input-item input--text" type="password" placeholder="******" name="check">
-
+								<input type="hidden" name="id" value="${member.id }">			
                                 <div class="signup-error hide"></div>
                                 <div class="button-box">
                                     <button class="btn button button-modify">개인정보 수정</button>
@@ -73,8 +66,9 @@ Member member = service.get(loginId);
 <%@include file="/layout/footer.jsp" %>
     </div>
 <script>
-	window.loginId = '${loginId}';
-	window.msg = '<%= msg%>';
+	window.loginId = '${id}';
+	window.msg = '${msg}';
+
 </script>
 <script src="../js/ajax/ajax.js"></script>
 </body>

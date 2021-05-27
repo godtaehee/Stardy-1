@@ -48,5 +48,6 @@ public class DeleteController extends HttpServlet{
 		}
 		
 		response.sendRedirect("/WEB-INF/views/study/list?sid=" + board.getStudyId());
+
 	}
 }

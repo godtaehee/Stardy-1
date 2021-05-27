@@ -16,8 +16,9 @@ import com.stardy.util.Logger;
 @WebServlet("/login")
 public class LoginController extends HttpServlet{
 	
-	static MemberServiceImpl service = new MemberServiceImpl();
-	static Logger log = new Logger();
+	MemberServiceImpl service = new MemberServiceImpl();
+	Logger log = new Logger();
+
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,13 +57,15 @@ public class LoginController extends HttpServlet{
 			
 			request.getSession().setAttribute("nickname", result.getNickname());
 			request.getSession().setAttribute("id", result.getId());
+			request.getSession().setAttribute("profile", result.getProfile());
+			request.getSession().setAttribute("path", result.getPath());
 			
 			request.setAttribute("msg", "success");
 			response.sendRedirect("/index2");
 		}
 		else {
 			request.setAttribute("msg", "fail");
-			response.sendRedirect("/login.jsp");
+			response.sendRedirect("/login");
 			
 		}
 	}

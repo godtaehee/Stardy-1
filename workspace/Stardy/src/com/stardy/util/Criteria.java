@@ -9,8 +9,7 @@ public class Criteria {
 
 	private int page;
 	private int count;
-	
-	private int sum;
+	private int total;
 	private int startNum;
 	private int tempEndNum;
 	private int endNum;
@@ -27,14 +26,15 @@ public class Criteria {
 		this(page, 10, sum);
 	}
 	
-	public Criteria(int page, int count, int sum) {
+	public Criteria(int page, int count, int total) {
 		this.page = page;
 		this.count = count;
-		this.sum = sum;
+		this.total = total;
 		
 		startNum = ((page) / 5) * 5;
 		tempEndNum = startNum + 5;
-		endNum = sum / 10 + (int) Math.ceil(sum % 10.0 / 10.0);
+		endNum = total / 10 + (int) Math.ceil(total % 10.0 / 10.0);
+
 		realEndNum = tempEndNum < endNum? tempEndNum : endNum;
 		
 		next = realEndNum < endNum;

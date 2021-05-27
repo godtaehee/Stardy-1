@@ -21,9 +21,6 @@
 </head>
 
 <body>
-<%
-String msg = request.getParameter("msg");
-%>
     <div class="container-only body__container">
     
 	<%@include file="/layout/header.jsp" %>
@@ -76,7 +73,7 @@ String msg = request.getParameter("msg");
 <!-- Modal -->
     
   	<script>
-  		window.msg = '<%=msg%>';
+  		window.msg = '${msg}';
   	</script>
     <!-- Javascript -->
     <script src="../js/login.js"></script>

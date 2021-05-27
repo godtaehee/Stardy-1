@@ -4,6 +4,8 @@ window.addEventListener("load", function() {
 	let isSub = window.isSub;
 	let isLike = window.isLike;
 
+	console.log('isLike : ' + isLike);
+
     let replyList = document.querySelector('.reply-list');		
     let moreBox = document.querySelector('.more-box');
 	let btnRegister = document.querySelector(".button-register");
@@ -64,26 +66,19 @@ window.addEventListener("load", function() {
 	    this.classList.toggle('icon-bookmark');
 	
 		if(!isSub)
-			ajax({
-				url: `/sub/${id}`,
-				method: 'POST',
-				loadend: () => {
-					console.log(`POST /sub/${id}`);
-					/* 즐겨찾기 추가 */
-					isSub = !isSub;
-		        	alert(`${id}번 게시글 즐겨찾기가 추가되었습니다.`);
-				}
+			subModule.add(id, () => {
+				console.log(`POST /sub/${id}`);
+				/* 즐겨찾기 추가 */
+				isSub = !isSub;
+	        	alert(`${id}번 게시글 즐겨찾기가 추가되었습니다.`);
 			});
 		else
-			ajax({
-				url: `/sub/${id}`,
-				method: 'DELETE',
-				loadend:() => {
-					console.log(`DELETE /sub/${id}`);
-				    /* 즐겨찾기 해제 */
-			    	isSub = !isSub;
-					alert(`${id}번 게시글 즐겨찾기가 취소되었습니다.`);
-				}
+			subModule.cancel(id, () => {
+				console.log(`DELETE /sub/${id}`);
+			    /* 즐겨찾기 해제 */
+		    	isSub = !isSub;
+				alert(`${id}번 게시글 즐겨찾기가 취소되었습니다.`);
+
 			});
 	});
 /* 좋아요 */

@@ -10,19 +10,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.stardy.entity.Board;
 import com.stardy.entity.view.BoardView;
+import com.stardy.service.BoardService;
 import com.stardy.service.BoardServiceImpl;
 
-@WebServlet("/board/modify")
+@WebServlet("/study/board/modify")
 public class ModifyController extends HttpServlet{
 
-	BoardServiceImpl boardService = new BoardServiceImpl();
+	BoardService boardService = new BoardServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		int idx = 3;
+
+		String bid_ = request.getParameter("id");
+		int bid = 0;
 		
+		if(bid_ != null && !bid_.equals(""));
+			bid = Integer.parseInt(bid_);
+			
+		BoardView boardView = boardService.read(bid);
+				
+		request.setAttribute("boardView", boardView);
 		
+		request.getRequestDispatcher("/WEB-INF/views/study/board/modify.jsp").forward(request, response);
 	}
 	
 	@Override
@@ -51,6 +60,6 @@ public class ModifyController extends HttpServlet{
 		
 		boardService.modify(board);
 		
-		response.sendRedirect("/WEB-INF/views/study/board/read.jsp?id=" + id);
+		response.sendRedirect("/study/board/read?id=" + id);
 	}
 }

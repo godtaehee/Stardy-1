@@ -1,11 +1,7 @@
-<%@page import="com.stardy.entity.view.BoardView"%>
-<%@page import="com.stardy.entity.Like"%>
-<%@page import="com.stardy.service.LikeServiceImpl"%>
-<%@page import="com.stardy.service.BookmarkServiceImpl"%>
-<%@page import="com.stardy.service.BoardServiceImpl"%>
-<%@page import="com.stardy.entity.Board"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,23 +25,6 @@
 </head>
 
 <body>
-
-<%
-
-	BoardServiceImpl boardService = new BoardServiceImpl();
-
-
-	String bid_ = request.getParameter("id");
-	int bid = 0;
-	
-	if(bid_ != null && !bid_.equals(""));
-		bid = Integer.parseInt(bid_);
-		
-	BoardView boardView = boardService.read(bid);
-	
-	int loginId = (int) request.getSession().getAttribute("id");
-%>
-
     <div class="container-only body__container">
         <%@include file="/layout/header.jsp" %>
         
@@ -56,40 +35,41 @@
                 <section class="board-box">
                     <h1 class="hide">게시글 상세</h1>
                     
-                    <form action="/board/modify" method="post" id="action-form">
-	                    <input type="hidden" name="id" value="<%=boardView.getId() %>">
+                    <form action="/study/board/modify" method="post" id="action-form">
+	                    <input type="hidden" name="id" value="${boardView.id }">
 	                    
 	                    <div class="pager-box">
 	                        <h1 class="hide">게시글 페이저</h1>
 	                    </div>
 	                    
 	                    <div class="input-box">
-	                        <input type="text" class="input-item title" name="title" value="<%=boardView.getTitle() %>">
+	                        <input type="text" class="input-item title" name="title" value="${boardView.title }">
 	                    </div>
 	
 	                    <div class="input-box span-box">
-	                        <span class="span writer"><%=boardView.getName() %></span>
+	                        <span class="span writer">${boardView.name }</span>
 	                        <span class="span">/</span>
-	                        <span class="span regdate"><%=boardView.getRegDate() %></span>
+	                        <span class="span regdate">${boardView.regDate }</span>
 	                    </div>
 	                    <hr>
 	                    <div class="input-box">
-	                        <textarea name="content" rows="20" class="input-item input--text" ><%=boardView.getContent() %></textarea>
+	                        <textarea name="content" rows="20" class="input-item input--text" >${boardView.content }</textarea>
 	                    </div>
 	
 	                    <nav class="util-box">
 	                        
 	                        <div class="button-box">
 	                            <h1 class="hide">버튼 박스</h1>
-	                            <a href="/board/read.jsp?id=<%=boardView.getId() %>" class="btn button button-back">취소</a>
+	                            <a href="/study/board/read?id=${boardView.id }" class="btn button button-back">취소</a>
 	                            
-	                            <%if(loginId == boardView.getMemberId()) {%>
-	                            <a class="btn button button-modify">저장</button>
+	                            
+	                            <c:if test="${id eq boardView.memberId }">
+	                            <a href="#" class="btn button button-modify">저장</a>
 	                            <a href="#" class="btn button button-delete">삭제</a>
-	                            <%} %>
+	                            </c:if>
 	                            
 	                            <!-- 사용자 인증을 위한 Email 데이터, Session의 Email과 대조 해서 본인 확인 -->
-	                            <input type="hidden" name="email" value="<%=boardView.getMemberId() %>">
+	                            <input type="hidden" name="email" value="${boardView.memberId }">
 	                        </div>
 	                    </nav>
                     </form>
@@ -102,35 +82,10 @@
 <%@include file="/layout/footer.jsp" %>
     </div>
 
-<!-- Modal -->
-<div class="modal hide">
-    <div class="modal-main">
-        <label class="modal-title">Comment</label>
-        <div class="reply-content-box">
-            <input type="text" class="input--text reply" value="">
-        </div>
-        <div class="reply-info-box">
-            <input type="text" class="input--text reply-writer" value="" readonly>
-            <input type="text" class="input--text regdate" value="" readonly>
-            <input type="hidden" class="reply-email" value="">
-            <input type="hidden" class="reply-rid" value="">
-        </div>
-    </div>
-
-    <div class="modal-footer">
-        <div class="modal-button-box">
-            <button class="button button-modify">수정</button>
-            <button class="button button-delete">삭제</button>
-            <button class="button button-cancel">취소</button>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-
 <!-- Javascript -->
 <script>
 	window.email = '${email}';
-	window.bid = <%=boardView.getId() %>;
+	window.bid = '${boardView.id }';
 </script>
 <script src="../../js/board/modify.js"></script>
 <script src="../../js/ajax/ajax.js"></script>

@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-13.0.2">
-		<attributes>
-			<attribute name="module" value="true"/>
-			<attribute name="owner.project.facets" value="java"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>
@@ -14,9 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/_Lecture/2021-02/tools/jstl-1.2.jar"/>
-	<classpathentry kind="lib" path="D:/_Lecture/2021-02/tools/ojdbc8.jar"/>
-	<classpathentry kind="lib" path="D:/_Lecture/2021-02/tools/gson-2.8.6.jar"/>
-	<classpathentry kind="lib" path="D:/_Lecture/2021-02/tools/lombok/lombok.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -35,15 +35,15 @@ public class SignupController extends HttpServlet{
 	      boolean result = service.insertMember(Member.builder().email(email).nickname(nickname).password(password).build());
 
 	      if(result)
-	    	  response.sendRedirect("/login.jsp");
+	    	  response.sendRedirect("/login");
 	      else
-	    	  response.sendRedirect("/signup.jsp");
+	    	  response.sendRedirect("/signup");
 	   }
 	   
 	   @Override
-	   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	      // TODO Auto-generated method stub
+	   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	      
+		   request.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(request, response);
 	   }
 
 }

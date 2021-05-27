@@ -1,13 +1,18 @@
 window.addEventListener("load", function(){
 
-	let email = window.email;
-    let profileModify = document.querySelector(".profile-modify");
-	let limitBox = document.querySelector('.limit');
-    let uploadBox = document.querySelector('.upload-box');
-    let btnUpload = document.querySelector('.button-upload');
-    let inputFile = document.querySelector('input[type="file"]');
-	let profileStatus = document.querySelector('.profile-status');
-	let textLimit = limitBox.querySelector('.text-limit');
+	//프로필 수정 버튼
+    const profileModify = document.querySelector(".profile-modify");
+
+	//글자 제한 박스
+	const profileStatus = document.querySelector('.profile-status');
+	const limitBox = document.querySelector('.limit');
+	const textLimit = limitBox.querySelector('.text-limit');
+	
+    const uploadBox = document.querySelector('.upload-box');
+    const btnUpload = document.querySelector('.button-upload');
+    const inputFile = document.querySelector('input[type="file"]');
+	
+	//프로필 수정 버튼이 눌렸는가? true : false
     let isModify = false;
 
 	profileStatus.addEventListener('keypress', function(e) {
@@ -16,6 +21,7 @@ window.addEventListener("load", function(){
 		textLimit.innerText = len > 0? len-1 : len;
 	});
 
+	//프로필 수정 버튼 Click
     profileModify.addEventListener("click", (e) => {
 			
         if(!isModify){
@@ -39,7 +45,7 @@ window.addEventListener("load", function(){
 
             /* ajax post 요청 -> 이미지 , 상태명 변경 */
 			let data = {
-				email: email,
+				
 				status: profileStatus.value
 			};
 
@@ -51,12 +57,65 @@ window.addEventListener("load", function(){
 					console.log(result);
 					console.log('프로필 변경 완료');
 				},
+				async: false,
 				error: (xhr, status, text) => {
 					console.log(status);
 				}
 			});
+			
+			window.location.reload();
         }
     });
+
+//파일 업로드 관련 **----------------------------------------
+
+    /* Drag & Drop */
+    uploadBox.addEventListener('dragenter', function(e) {
+		if(!isModify) return;
+		
+    });
+
+    uploadBox.addEventListener('dragleave', function(e) {
+		if(!isModify) return;
+	
+        uncheck();
+    });
+
+	uploadBox.addEventListener('dragover', function(e) {
+		
+        e.preventDefault();
+		if(!isModify) return;
+
+        /* 선택한 객체의 MIME 타입 */
+        const data = e.dataTransfer.types;
+
+        /* 드래그 해온 객체가 File이 아니면 false */
+        let valid = data.indexOf('Files') >= 0;
+
+        uploadBox.classList.add(valid? 'valid' : 'invalid');
+    });
+
+    uploadBox.addEventListener('drop', function(e) {
+		
+        e.preventDefault();
+		if(!isModify) return;
+
+        uncheck();
+        
+		const data = e.dataTransfer;
+        
+		//유효성 Check
+		if(!isValid(data)) return;
+
+		upload(data.files[0]);
+    });
+    
+    inputFile.oninput = function(e) {
+
+        const file = inputFile.files[0];
+
+        upload(file);
+    }
 
     /* File Event Trigger */
     btnUpload.addEventListener('click', function(e) {
@@ -70,62 +129,54 @@ window.addEventListener("load", function(){
         inputFile.dispatchEvent(event);
     });
 
-    /* Drag & Drop */
-    uploadBox.addEventListener('dragenter', function(e) {
-        console.log('a')
-    });
+	function uncheck(){
+		uploadBox.classList.remove('valid');
+		uploadBox.classList.remove('invalid');
+	}
+	
+	function upload(file){
+		
+		const formData = new FormData();
+		formData.append('uploadFile', file);
+		
+		ajax({
+			url: '/mypage/upload',
+			method: 'POST',
+			data: formData,
+			progress: () => {
+				
+			},
+			loadend: () => {
+				
+			}
+		});
+	}
+	
+	function isValid(data){
+		
+		//파일인지 유효성 검사
+		if(data.types.indexOf('Files') < 0)
+			return false;
+		
+		//이미지인지 유효성 검사
+		if(data.files[0].type.indexOf('image') < 0){
+			alert('이미지 파일만 업로드 가능합니다.');
+			return false;
+		}
+		
+		//파일의 개수는 1개씩만 가능하도록 유효성 검사
+		if(data.files.length > 1){
+			alert('파일은 하나씩 전송이 가능합니다.');
+			return false;
+		}
+		
+		//파일의 사이즈는 50MB 미만
+		if(data.files[0].size >= 1024 * 1024 * 50){
+			alert('50MB 이상인 파일은 업로드할 수 없습니다.');
+			return false;
+		}
+		
+		return true;
+	}
 
-    uploadBox.addEventListener('dragover', function(e) {
-        e.preventDefault();
-
-        /* 선택한 객체의 MIME 타입 */
-        var data = e.dataTransfer.types;
-
-        /* 드래그 해온 객체가 File이 아니면 false */
-        var vaild = data.indexOf('Files') >= 0;
-
-        this.style.backgroundColor = !vaild? 'red': 'green';
-    });
-
-    uploadBox.addEventListener('dragleave', function(e) {
-        console.log('dragleave');
-
-        this.style.backgroundColor = 'white';
-    });
-
-    uploadBox.addEventListener('drop', function(e) {
-        e.preventDefault();
-
-        this.style.backgroundColor = 'white';
-        
-        var data = e.dataTransfer.files[0];
-
-        console.dir(data);
-        
-        var fileName = data.name;
-        var fileSize = data.size;
-        var type = data.type;
-
-        addFile(fileName, fileSize, type);
-    });
-    /* Drag & Drop */
-    
-    inputFile.oninput = function(e) {
-
-        var file = inputFile.files[0];
-
-        addFile(file.name, file.size, file.type);
-    }
-
-    function addFile(name, size, type){
-
-        var html = `
-            <div>name : ${name}</div>
-            <div>size : ${size}</div>
-            <div>type : ${type}</div>
-        `;
-
-        //uploadBox.innerHTML += html;
-        console.log(html);
-    }
 });

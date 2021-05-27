@@ -1,8 +1,4 @@
-<%@page import="com.stardy.entity.Friend"%>
-<%@page import="java.util.List"%>
-<%@page import="com.stardy.service.FriendServiceImpl"%>
-<%@page import="com.stardy.entity.Member"%>
-<%@page import="com.stardy.service.MemberServiceImpl"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -28,14 +24,6 @@
 </head>
 
 <body>
-<%
-
-	Integer loginId = (Integer) request.getSession().getAttribute("id");
-
-MemberServiceImpl service = new MemberServiceImpl();
-
-Member member = service.get(loginId);
-%>
     <div class="container-only body__container">
         <%@include file="/layout/header.jsp" %>
 
@@ -51,7 +39,7 @@ Member member = service.get(loginId);
                                 <button class="btn button button-img button-search">팔로워 검색</button>
                             </div>
                         </form>
-                        <a href="friends.jsp" class="btn">팔로잉</a>
+                        <a href="friends" class="btn">팔로잉</a>
                     </div>
 
                     <div class="content-list-box">
@@ -80,7 +68,8 @@ Member member = service.get(loginId);
 <%@include file="/layout/footer.jsp" %>
     </div>
 <script>
-	window.loginId = '<%=loginId %>';
+	window.loginId = '${id}';
+
 	window.status = false;
 </script>  
 <script src="../js/ajax/ajax.js"></script>

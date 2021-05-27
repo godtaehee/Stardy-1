@@ -146,7 +146,8 @@ function cover(target, xhr) {
 	screen.style.opacity = '0.7';
 	screen.style.height = '100%';
 	screen.style.width = '100%';
-	screen.style.background = '#e9e9e9 url("../img/ajax-loader.gif") no-repeat center';
+
+	screen.style.background = '#e9e9e9 url("../../img/ajax-loader.gif") no-repeat center';
 	screen.style.position = 'absolute';
 	screen.style.top = '0';
 	screen.style.zIndex = '100';
@@ -158,7 +159,8 @@ function cover(target, xhr) {
 	btnClose.style.right = '20px';
 	btnClose.style.top = '20px';
 	btnClose.style.border = 'none';
-	btnClose.style.background = 'url("../img/icon-close.svg") no-repeat center';
+	btnClose.style.background = 'url("../../img/icon-close.svg") no-repeat center';
+
 	btnClose.style.cursor = 'pointer';
 
 	btnClose.addEventListener('click', function (e) {

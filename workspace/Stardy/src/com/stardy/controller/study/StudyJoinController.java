@@ -49,6 +49,7 @@ public class StudyJoinController extends HttpServlet  {
 
         if(flag == 1)
             response.sendRedirect("/WEB-INF/views/study/board/detail.jsp?id="+sId);
+
     }
 
 

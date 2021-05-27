@@ -43,7 +43,9 @@ function ajax(obj){
 		
 		//console.log(data);
 		
-		obj.loadend(data);
+
+		if(obj.loadend)
+			obj.loadend(data);
 	});
 	
 	/* 실패 */
@@ -65,10 +67,10 @@ function ajax(obj){
 	});
 	
 	/* 진행 */
-	xhr.addEventListener('progress', function() {
+	xhr.upload.addEventListener('progress', function(e) {
 		
 		if(obj.progress){
-			obj.progress(xhr);
+			obj.progress(e);
 		}
 	});
 	
@@ -79,7 +81,11 @@ function ajax(obj){
 			obj.loadstart(xhr);
 	});
 	
-	xhr.open(method, url, true);
+	if(obj.async === false)
+		xhr.open(method, url, obj.async);
+	else
+		xhr.open(method, url, true);
+
 	
 	if(obj.contentType)
 		xhr.setRequestHeader('Content-Type', obj.contentType);	

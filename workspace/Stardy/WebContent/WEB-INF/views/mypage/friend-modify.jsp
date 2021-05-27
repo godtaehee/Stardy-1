@@ -1,10 +1,7 @@
-<%@page import="com.stardy.entity.Friend"%>
-<%@page import="java.util.List"%>
-<%@page import="com.stardy.service.FriendServiceImpl"%>
-<%@page import="com.stardy.entity.Member"%>
-<%@page import="com.stardy.service.MemberServiceImpl"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,14 +25,6 @@
 </head>
 
 <body>
-<%
-
-	Integer loginId = (Integer) request.getSession().getAttribute("id");
-
-MemberServiceImpl service = new MemberServiceImpl();
-
-Member member = service.get(loginId);
-%>
     <div class="container-only  body__container">
         <%@include file="/layout/header.jsp" %>
 
@@ -56,7 +45,7 @@ Member member = service.get(loginId);
                     <div class="content-list-box">
                         <div>
                             <label class="content-list-title">내 팔로잉 목록</label>
-                            <a href="friends.jsp"><button class="btn button friend-modify">확인</button></a>
+                            <a href="friends"><button class="btn button friend-modify">확인</button></a>
                         </div>
                         <div class="content-list">
                         
@@ -80,7 +69,7 @@ Member member = service.get(loginId);
 <%@include file="/layout/footer.jsp" %>
     </div>
 <script>
-	window.loginId = '<%=loginId %>';
+	window.loginId = '${id}';
 	window.status = true;
 </script>   
 <script src="../js/ajax/ajax.js"></script>

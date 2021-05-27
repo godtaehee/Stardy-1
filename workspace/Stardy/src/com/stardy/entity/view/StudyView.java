@@ -11,6 +11,13 @@ import lombok.Data;
 @AllArgsConstructor
 public class StudyView {
 
+
+	public StudyView(int id2, String title2, String intro2, String open2, String limit2, Date regDate2,
+			Date updateDate2, Date dueDate2, String bg2, String path2, int memberId2, int categoryId2) {
+		// TODO Auto-generated constructor stub
+	}
+	
+
 	private int id;
 	private String title;
 	private String intro;

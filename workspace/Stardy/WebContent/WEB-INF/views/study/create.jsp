@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -42,13 +43,14 @@
                    	<!-- 폼태그폼태 폼태그폼태 폼태그폼태 폼태그폼태 폼태그폼태 폼태그폼태 -->
             	<form action="target" method="post" enctype="multipart/form-data">
             		<input type="hidden" class="category" name="category">
-            		<input type="hidden" name="memberId" value="${memberId }">
+            		<input type="text" name="memberId" value="${memberId }">
             		   <section class="bg-section">
                         <div class="jumbotron-img">
                             <div class="d-none">이미지</div>
                            	<div class="jumbotron-img-container"></div>
                             <label class="camera">
                            	    <input type="file" style="visibility:hidden" name="imgFile" accept="image/*" onchange="setThumbnail(event)"/>
+
                            	</label>
                         </div>
                         <div class="study-name float-content flex-column">
@@ -97,7 +99,7 @@
                         <section class="create-btn">
                             <label class="d-none">개설하기</label>
                             <a href="studyList.html">
-                                <button type="submit" class="img-create" href="">개설하기</button>
+                                <button type="submit" class="img-create" href="study/target">개설하기</button>
                             </a>
                         </section>
             

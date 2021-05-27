@@ -53,7 +53,9 @@ public class WriteController extends HttpServlet {
 
         System.out.println(flag);
         if(flag == 1)
+
             resp.sendRedirect("/WEB-INF/views/study/board/detail?id=" + sid);
+
 
 
 

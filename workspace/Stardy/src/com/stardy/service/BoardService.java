@@ -3,10 +3,12 @@ package com.stardy.service;
 import java.util.List;
 
 import com.stardy.entity.Board;
+import com.stardy.entity.Files;
 import com.stardy.entity.view.BoardListContent;
 import com.stardy.entity.view.BoardView;
 import com.stardy.util.DatabaseUtil;
 import com.stardy.util.Logger;
+
 
 public interface BoardService {
 	
@@ -27,6 +29,9 @@ public interface BoardService {
 	 int modify(BoardView board);
 	
 	/* 게시글 삭제 */
-
 	 int delete(int id);
+	 
+	 /* 게시글 작성 */
+	 int write(Board board, List<Files> file);
+>>>>>>> refs/remotes/real/master
 }
