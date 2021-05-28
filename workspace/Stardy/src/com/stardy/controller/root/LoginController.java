@@ -49,20 +49,26 @@ public class LoginController extends HttpServlet{
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String url = request.getParameter("url");
+		String uri = request.getParameter("uri");
 		
 		Member result = service.login(email, password);
 		
 		if(result != null) {
 			log.info("로그인 성공");
-			log.info("url: " + url);
+			log.info("uri: " + uri);
 			request.getSession().setAttribute("nickname", result.getNickname());
 			request.getSession().setAttribute("id", result.getId());
 			request.getSession().setAttribute("profile", result.getProfile());
 			request.getSession().setAttribute("path", result.getPath());
 			
-			request.setAttribute("msg", "success");
-			response.sendRedirect("/index");
+			
+			if(uri == null) {
+				request.setAttribute("msg", "success");
+				response.sendRedirect("/index");
+			}
+			else {
+				response.sendRedirect(uri);
+			}
 		}
 		else {
 			request.setAttribute("msg", "fail");

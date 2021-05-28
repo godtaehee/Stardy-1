@@ -32,7 +32,7 @@
                 <div class="login-form-container">
                     <h1 class="hide">로그인 폼</h1>
                     <form action="/login" method="post" class="form form-login">
-                    	<input type="hidden" name="url" value="${url }">
+                    	<input type="hidden" name="uri" value="${param.uri}">
                         <div class="input-control">이메일을 입력해주세요.</div>
                         <input class="input-item input--text" name="email" type="email" placeholder="error@mail.com">
 
