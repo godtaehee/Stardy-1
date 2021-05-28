@@ -62,7 +62,7 @@ public class LoginController extends HttpServlet{
 			request.getSession().setAttribute("path", result.getPath());
 			
 			
-			if(uri == null) {
+			if(uri == null || uri.equals("")) {
 				request.setAttribute("msg", "success");
 				response.sendRedirect("/index");
 			}

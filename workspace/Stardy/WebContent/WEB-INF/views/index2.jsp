@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -17,7 +16,15 @@
 <body>
     <div class="container">
         <%@include file="/layout/header.jsp"%>
-        <section class="jumbotron">
+
+      		<c:choose>
+   				<c:when test="${memberId == 0}">
+   					<section class="jumbotron notmember">
+  				</c:when>
+   				<c:otherwise>
+   					<section class="jumbotron">
+   				</c:otherwise>
+			</c:choose>   
             <h1 class="hide">jumbo</h1>
             <div class="jumbo-content">
                 <div class="jumbo-title">Stardy</div>
@@ -182,7 +189,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <c:forEach var="myStudy" items="${myStudy}">
-                                        <li class="mini-card">
+                                        <li class="mini-card one">
                                             <a href="study/board/detail?id=${myStudy.id}">
                                                 <div class="mini-card-container" >
                                                 	<c:choose>
@@ -216,11 +223,11 @@
                     <a href="study/list"><div class="arrow"></div></a>
                 </div>
                 <div class="study-list-desc">곧 모집이 마감되는 스터디에요! 개설된 스터디는 '스터디 보기' 메뉴에서 조회할 수있어요</div>
-                <div class="study-list-item">
+                <div class="study-list-item two">
                     <div class="prev-btn"></div>
                     <ul class="study-list-container">
                         <c:forEach var="notInStudy" items="${notInStudy}">
-                            <li class="mini-card">
+                            <li class="mini-card two">
                                 <a href="study/board/detail?id=${notInStudy.id}">
                                     <div class="mini-card-container">
                                         <!-- <div class="mini-card-img" style="background:url('/upload/${notInStudy.path}/${notInStudy.bg}') center center no-repeat"></div> -->
@@ -248,48 +255,105 @@
     <script>
 
          (() => {
-             const examInfo = document.querySelector('.exam-info-item');
              const card = document.querySelectorAll('.exam-card');
-             const prev = document.querySelector('.exam-info-main .prev-btn');
-             console.log(prev);
-             const after = document.querySelector('.exam-info-main .after-btn');
-             const container = document.querySelector('.container');
+             const mini_card = document.querySelectorAll('.mini-card.one');
+             const mini_card2 = document.querySelectorAll('.mini-card.two');
+
+             const examInfoMain = document.querySelector('.exam-info-main');
+             const studyListItem = document.querySelector('.study-list-item');
+             const studyListItem2 = document.querySelector('.study-list-item.two');
+
+
+
+
+
              let start = 0;
              let dx = 100;
-             // card.style.display = 'flex';
 
 
-             console.log(card);
+             let start2 = 0;
+             let dx2 = 100;
 
-             prev.addEventListener('click', () => {
-                 if(start >= 0) return;
 
-                 for(let i = 0; i < card.length; i++){
-                     card[i].style.transform = `translateX(${start + dx}px)`;
+             let start3 = 0;
+             let dx3 = 100;
+
+
+             examInfoMain.addEventListener('click', (e) => {
+                 if(e.target.className==='prev-btn') {
+                     if(start >= 0) return;
+
+                     for(let i = 0; i < card.length; i++){
+                         const sum = start + dx;
+                         card[i].style.transform = "translateX("+sum+"px)";
+                     }
+                     start+=dx;
+                 }else if(e.target.className==='after-btn') {
+                     if(start <= -1000) return;
+
+                     for(let i = 0; i < card.length; i++){
+                         const sum = start - dx;
+                         card[i].style.transform = "translateX("+sum+"px)";
+                     }
+
+                     start-=dx;
                  }
-                 start+=dx;
              });
 
-             after.addEventListener('click', () => {
-   
-                 if(start <= -1000) return;
-                 
-                 
+             studyListItem.addEventListener('click', (e) => {
+                 if(e.target.className==='prev-btn') {
+                     if(start2 >= 0) return;
 
-                 for(let i = 0; i < card.length; i++){
-         
-                     card[i].style.transform = `translateX(${start - dx}px)`;
-                     console.log(start-dx);
+                     for(let i = 0; i < mini_card.length; i++){
+                         const sum = start2 + dx2;
+                         mini_card[i].style.transform = "translateX("+sum+"px)";
+                     }
+                     start2+=dx2;
+                 }else if(e.target.className==='after-btn') {
+                     if(start2 <= -1000) return;
+
+                     for(let i = 0; i < mini_card.length; i++){
+                         const sum = start2 - dx2;
+                         mini_card[i].style.transform = "translateX("+sum+"px)";
+                     }
+
+                     start2-=dx2;
                  }
-                 start-=dx;
-          
              });
+
+             studyListItem2.addEventListener('click', (e) => {
+                 if(e.target.className==='prev-btn') {
+                     if(start3 >= 0) return;
+
+                     for(let i = 0; i < mini_card2.length; i++){
+                         const sum = start3 + dx3;
+                         mini_card2[i].style.transform = "translateX("+sum+"px)";
+                     }
+                     start3+=dx3;
+                 }else if(e.target.className==='after-btn') {
+                     if(start3 <= -1000) return;
+
+                     for(let i = 0; i < mini_card2.length; i++){
+                         const sum = start3 - dx3;
+                         mini_card2[i].style.transform = "translateX("+sum+"px)";
+                     }
+
+                     start3-=dx3;
+                 }
+             });
+
+
+
+
+
+
+
+
 
              window.addEventListener("load", function(){
 
                  var userId = '${email}';
 
-                 console.log(userId);
 
                  if(userId !== null && userId !== undefined && userId !== ""){
                      var onBox = document.querySelector(".on-box");

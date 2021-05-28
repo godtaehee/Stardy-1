@@ -35,22 +35,7 @@
 
                     <div class="bookmarks-box">
                         <div class="bookmarks">
-                            <!-- <div class="bookmark-box">
-                                <div class="bookmark-main">
-                                    <div class="content-box text-no-over">
-                                        오늘 스터디 중 유익한 내용 공유합니다.
-                                    </div>
-                                    <span class="icon-bookmark delete-bm"></span>
-                                </div>
-                                <div class="bookmark-sub">
-                                    <div class="writer-box">
-                                        James
-                                    </div>
-                                    <div class="date-box">
-                                        2021-03-27
-                                    </div>
-                                </div>
-                            </div> -->
+                            
                         </div>
                     </div>
 					
